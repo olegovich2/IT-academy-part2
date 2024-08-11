@@ -55,23 +55,35 @@ const complexObject = {
 };
 console.log(complexObject);
 const duplicateObject = (obj) => {
-  if (obj === null) return null;
-  const duplicate = Object.assign({}, obj);
-  Object.keys(duplicate).forEach(
-    (key) =>
-      (duplicate[key] =
-        typeof obj[key] === "object" ? duplicateObject(obj[key]) : obj[key])
-  );
   if (Array.isArray(obj)) {
-    duplicate.length = obj.length;
-    return Array.from(duplicate);
+    const duplicateArr = [];
+    for (let item of obj) {
+      duplicateArr.push(duplicateObject(item));
+    }
+    return duplicateArr;
+  } else if (typeof obj === "object") {
+    const duplicateObj = {};
+    for (let key in obj) {
+      duplicateObj[key] = duplicateObject(obj[key]);
+    }
+    return duplicateObj;
+  } else {
+    return obj;
   }
-  return duplicate;
 };
+
 const copiedObject = duplicateObject(complexObject);
 console.log(copiedObject);
 
-// tests(изменение в новом объекте не переносятся в оригинал)
+// tests
 
 copiedObject.history[0].timestamp = "New Object";
 console.log(copiedObject, complexObject);
+
+console.log(complexObject == copiedObject);
+
+console.log(complexObject.scores == copiedObject.scores);
+
+console.log(complexObject.address == copiedObject.address);
+
+console.log(complexObject.address.geo == copiedObject.address.geo);
