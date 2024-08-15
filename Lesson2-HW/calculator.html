@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    let formula = "3 + 5 * (2 - 8)";
+    let arrFormula = formula.split(' ').join('');
+    let arrFormula2 = arrFormula.split('');
+    console.log(arrFormula2); 
+    function search(array) {
+    let number = '';
+    for (let i = 0; i < array.length; i++) {
+        if (array[i] === '(') {
+             number += array[i];
+        } else if (array[i] === ')') {
+            number += array[i];
+            break;
+        } else if (number.length > 0) {
+            number += array[i];
+        }
+    }
+    return number;
+}
+
+function countString() {
+    let result = eval(search(arrFormula2));
+    return result;
+}
+ 
+ function cutString() {
+    let string = arrFormula2.join('');
+    let subString = search(arrFormula2);
+    let newString = string.replace(subString, countString());
+    return newString;
+ }
+ let final = eval(cutString());
+    console.log(final);
+</script>
+</html>
