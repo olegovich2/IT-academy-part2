@@ -82,6 +82,7 @@ class BankAccount {
     }, delay);
   }
 }
+
 /*Создание аккаунтов */
 const vladAccount = new BankAccount("vlad", 1000);
 const leshaAccount = new BankAccount("lesha", 1000);
@@ -115,6 +116,14 @@ lenaAccount.withdraw(1100);
 
 /*Проверка баланса */
 vladAccount.getBalance();
+
+// BankAccount.prototype.startInterest = function (rate, interval) {
+//   this.count = setInterval(() => {
+//     this.amount = Math.round((rate / 100) * this.amount + this.amount);
+//     console.log(`Начисление процентов ${this.name}: ${this.amount}`);
+//   }, interval);
+//   this.stopInterest();
+// };
 
 /*Начисление процентов */
 vladAccount.startInterest(10, 100);
