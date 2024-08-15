@@ -113,7 +113,7 @@ leshaAccount.withdraw("sfdsfdsf");
 console.log("*****Списание недопустимого значения*****");
 lenaAccount.withdraw(1100);
 
-/*Проверка баланса */
+/*Проверка баланса аккаунта*/
 vladAccount.getBalance();
 
 /*Начисление процентов */
