@@ -22,19 +22,18 @@ class BankAccount {
   }
   deposit(contribution) {
     try {
-      if (isNaN(contribution) === true || contribution <= 0)
-        throw new Error("Проверьте значение для снятия со счета");
+      if (isNaN(contribution) || contribution <= 0)
+        throw new Error("Проверьте значение для начисления на счет");
     } catch (error) {
       console.log(error.message);
       contribution = 0;
-      this.amount = this.amount + contribution;
     }
     this.amount = this.amount + contribution;
     this.getBalance();
   }
   withdraw(cashOut) {
     try {
-      if (isNaN(cashOut) === true || cashOut <= 0)
+      if (isNaN(cashOut) || cashOut <= 0)
         throw new Error("Проверьте значение для снятия со счета");
       try {
         if (this.amount < cashOut)
@@ -42,23 +41,23 @@ class BankAccount {
       } catch (error) {
         console.log(error.message);
         cashOut = 0;
-        this.amount = this.amount - cashOut;
       }
     } catch (error) {
       console.log(error.message);
       cashOut = 0;
-      this.amount = this.amount - cashOut;
     }
     this.amount = this.amount - cashOut;
     this.getBalance();
   }
   getBalance() {
-    console.log(`На счете у ***${this.name}***: ${this.amount}`);
+    console.log(`На счете у ***${this.name}***: ${this.amount.toFixed(2)}`);
   }
   startInterest(rate, interval) {
     this.count = setInterval(() => {
-      this.amount = Math.round((rate / 100) * this.amount + this.amount);
-      console.log(`Начисление процентов ${this.name}: ${this.amount}`);
+      this.amount = (rate / 100) * this.amount + this.amount;
+      console.log(
+        `Начисление процентов ${this.name}: ${this.amount.toFixed(2)}`
+      );
     }, interval);
     this.stopInterest();
   }
@@ -66,7 +65,7 @@ class BankAccount {
     if (this.count) {
       setTimeout(() => {
         clearInterval(this.count);
-        console.log(`Счет ${this.name} составляет ${this.amount}`);
+        console.log(`Счет ${this.name} составляет ${this.amount.toFixed(2)}`);
       }, 1200);
     }
   }
@@ -82,6 +81,7 @@ class BankAccount {
     }, delay);
   }
 }
+
 /*Создание аккаунтов */
 const vladAccount = new BankAccount("vlad", 1000);
 const leshaAccount = new BankAccount("lesha", 1000);
@@ -113,8 +113,16 @@ leshaAccount.withdraw("sfdsfdsf");
 console.log("*****Списание недопустимого значения*****");
 lenaAccount.withdraw(1100);
 
-/*Проверка баланса аккаунта*/
+/*Проверка баланса */
 vladAccount.getBalance();
+
+// BankAccount.prototype.startInterest = function (rate, interval) {
+//   this.count = setInterval(() => {
+//     this.amount = Math.round((rate / 100) * this.amount + this.amount);
+//     console.log(`Начисление процентов ${this.name}: ${this.amount}`);
+//   }, interval);
+//   this.stopInterest();
+// };
 
 /*Начисление процентов */
 vladAccount.startInterest(10, 100);
