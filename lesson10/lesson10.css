@@ -1,0 +1,12 @@
+body {
+    height: 3000px;
+}
+#area {
+    width: auto;
+    height: auto;
+    border: 5px solid;
+    border-color: red green;
+}
+.hidden-menu ul {
+    display: none;
+}
