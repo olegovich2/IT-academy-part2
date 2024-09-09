@@ -1,0 +1,22 @@
+img {
+    margin: 10px;
+}
+.action {
+    position: absolute;
+    top: 0;
+  left: 25%;
+  right: 25%;
+  width: 600px;
+    height: 600px;
+    z-index: 10;
+    
+    
+  
+  border: 5px solid rgba(253, 165, 0, 0.9);
+}
+@media screen and (max-width: 520px) {
+    .action{
+        width: 200px;
+    height: 200px;
+    }
+}
