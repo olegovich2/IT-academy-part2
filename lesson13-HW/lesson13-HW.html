@@ -5,9 +5,154 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="lesson13-HW.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/d23624fc6e.js" crossorigin="anonymous"></script>
 </head>
 <body>
-    
+    <div class="containerForContent">
+        <header class="full-screen">            
+            <div class="full-screen__body">
+                <img class="netflix_header" title="netflix-roulette" alt="netflix-roulette" src="./Images/netflixroulette copy.png">
+                <button class="button_add_movie" type="button">
+                    + ADD MOVIE
+                </button>
+                
+                <div class="full-screen__caption">
+                    <h1>FIND YOUR MOVIE</h1>
+                    <div id="navbar_search" class="navbar__search">
+                            <input class="navbar__search__input" type="text" placeholder="What do you want to watch?">
+                            <button class="navbar__search__button" type="button">
+                                SEARCH
+                            </button>
+                    </div>
+                </div>
+            </div>
+            <img class="full-screen__img" src="./Images/Bitmap.png">
+        </header>
+        <nav class="container">
+            <div id="navbar_list_left" class="navbar__list">
+                <ul class="navbar__list__ul_left">
+                    <li class="navbar__list__li">
+                        <button class="navbar__list__link" type="button">ALL</button>
+                    </li>
+                    <li class="navbar__list__li">
+                        <button class="navbar__list__link" type="button">DOCUMENTARY</button>
+                    </li>
+                    <li class="navbar__list__li">
+                        <button class="navbar__list__link" type="button">COMEDY</button>
+                    </li>
+                    <li class="navbar__list__li active">
+                        <button class="navbar__list__link" type="button">HORROR</button>
+                    </li>
+                    <li class="navbar__list__li active">
+                        <button class="navbar__list__link" type="button">CRIME</button>
+                    </li>
+                </ul>
+            </div>
+            <div id="navbar_list_right" class="navbar__list">
+                <ul class="navbar__list__ul_right">
+                    <li class="navbar__list__li">
+                        <button class="navbar__list__link" type="button">SORT BY</button>
+                    </li>
+                    <li class="navbar__list__li">
+                        <select class="navbar__list__link" id="year">
+                            <option>RELEASE DATE</option>
+                        </select>                        
+                    </li>                    
+                </ul>
+            </div>
+        </nav>
+        <main class="main">            
+            <section class="section">
+                <div class="hello"></div>
+                <div class="main_content">
+                    <div class="points">
+                        <div class="points_container">
+                            <div class="points_body">
+                                <div class="card-orientation">
+                                    <div class="card">
+                                        <img class="img" src="./Images/watermelon_sling.jpg" alt="Арбузный слинг" title="Арбузный слинг">
+                                        <div class="card_caption">
+                                            <h3>Арбузный слинг</h3>
+                                            <div class="release_year_movie">2008</div>
+                                            <p class="card_genre">Action & Adventure</p>
+                                        </div>
+                                        <div class="card_content">                                             
+                                        <p class="card_overview"></p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="card-orientation">
+                                    <div class="card">
+                                        <img class="img" src="./Images/watermelon_sling.jpg" alt="Арбузный слинг" title="Арбузный слинг">
+                                        <div class="card_caption">
+                                            <h3>Арбузный слинг</h3>
+                                            <p class="card_genre"></p>
+                                        </div>
+                                        <div class="card_content">                                            
+                                        <p class="card_overview"></p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="card-orientation">
+                                    <div class="card">
+                                        <img class="img" src="./Images/watermelon_sling.jpg" alt="Арбузный слинг" title="Арбузный слинг">
+                                        <div class="card_caption">
+                                            <h3>Арбузный слинг</h3>
+                                            <p class="card_genre"></p>
+                                        </div>
+                                        <div class="card_content">                                            
+                                        <p class="card_overview"></p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="card-orientation">
+                                    <div class="card">
+                                        <img class="img" src="./Images/watermelon_sling.jpg" alt="Арбузный слинг" title="Арбузный слинг">
+                                        <div class="card_caption">
+                                            <h3>Арбузный слинг</h3>
+                                            <p class="card_genre"></p>
+                                        </div>
+                                        <div class="card_content">                                            
+                                        <p class="card_overview"></p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="card-orientation">
+                                    <div class="card">
+                                        <img class="img" src="./Images/watermelon_sling.jpg" alt="Арбузный слинг" title="Арбузный слинг">
+                                        <div class="card_caption">
+                                            <h3>Арбузный слинг</h3>
+                                            <p class="card_genre"></p>
+                                        </div>
+                                        <div class="card_content">                                            
+                                        <p class="card_overview"></p>
+                                    </div>
+                                    </div>
+                                </div>
+                                <div class="card-orientation">
+                                    <div class="card">
+                                        <img class="img" src="./Images/watermelon_sling.jpg" alt="Арбузный слинг" title="Арбузный слинг">
+                                        <div class="card_caption">
+                                            <h3>Арбузный слинг</h3>
+                                            <p class="card_genre"></p>
+                                        </div>
+                                        <div class="card_content">                                            
+                                        <p class="card_overview"></p>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        </main>
+    </div>
+    <footer class="footer">
+        <img title="netflix-roulette" alt="netflix-roulette" src="./Images/netflixroulette copy.png">
+    </footer>
 </body>
 <script src="lesson13-HW.js"></script>
 </html>
