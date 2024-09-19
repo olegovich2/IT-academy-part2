@@ -48,15 +48,19 @@
             <input class="form-check-input" type="checkbox" role="switch" id="isForecast" name="isForecast" value="true" checked>
             <label class="form-check-label" for="isForecast">Текущая погода/прогноз</label>
           </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <!-- <button type="submit" class="btn btn-primary">Submit</button> -->
       </form>
+      <div id="weatherAppRoot"></div>
       <template id="weatherCardTemplate">
-        <div class="card">
-            <img src="..." class="card-img-top" alt="...">
+        <div class="card border border-primary">
+            <img src="..." class="card-img-top" style="width: 150px; height: 150px;" alt="...">
             <div class="card-body">
-              <h5 class="card-title">Card title</h5>
-              <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+              <h4 class="card-description border-bottom border-secondary">Card title</h4>
+              <h5 class="card-temperature">Card title</h5>
+              <h6 class="card-feels-like">Card title</h6>
+              <h6 class="card-wind">Card title</h6>
+              <h6 class="card-rain">Card title</h6>
+              <h6 class="card-text card-date text-secondary">Last updated 3 mins ago</h6>
             </div>
           </div>
       </template>
