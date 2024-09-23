@@ -1,3 +1,5 @@
+import { getWeather } from "./model.js";
+import { makeRequestURL } from "./controller.js";
 // делаем приложение на основе погоды
 let tempUnitSymbol;
 let windMeasureUnits;
@@ -23,25 +25,7 @@ const weatherDictionary = {
   },
 };
 const weatherParamsForm = document.querySelector("#weatherParamsForm");
-const makeRequestURL = (weatherParams) => {
-  const appid = "538ef88fb61bc02850dec49c82dc63e6";
-  const baseURL = "https://api.openweathermap.org/data/2.5/";
-  const urlPath = weatherParams.isForecast ? "forecast" : "weather";
-  const url = new URL(urlPath, baseURL);
-  Object.entries(weatherParams).forEach(([key, value]) => {
-    if (key !== "isForecast") url.searchParams.append(key, value);
-  });
-  url.searchParams.append("appid", appid);
-  return url;
-};
 
-const getWeather = (url) => {
-  return fetch(url)
-    .then((res) => res.ok && res.json())
-    .catch((e) => {
-      console.error(e);
-    });
-};
 const getWeatherParams = (elements) => {
   const weatherParams = [...elements].reduce((acc, el) => {
     if (el.type === "radio" || el.type === "checkbox") {
@@ -157,14 +141,22 @@ const makeForecastApp = (data) => {
   weatherAppRoot.append(...weatherCards);
 };
 const makeCurrentWeatherApp = (data) => {
-  console.log(data);
-
   const weatherAppRoot = document.querySelector("#weatherAppRoot");
   weatherAppRoot.innerHTML = "";
   const weatherCard = createWeatherCard(data);
   weatherAppRoot.append(weatherCard);
 };
-const setUpLocalWeatherParams = (weatherParams) => {
+
+const weatherParamsStorageKey = "weatherParams";
+const saveParamsToStore = (params) => {
+  console.log(params);
+  window.localStorage.setItem(weatherParamsStorageKey, JSON.stringify(params));
+};
+
+const getParamsFromStorage = () =>
+  JSON.parse(window.localStorage.getItem(weatherParamsStorageKey));
+
+const setUpLocalWeatherParams = (weatherParams, isSetupLocalStorage) => {
   if (weatherParams.units === "imperial") {
     tempUnitSymbol = "\u00B0F";
     windMeasureUnits = "mph";
@@ -173,6 +165,8 @@ const setUpLocalWeatherParams = (weatherParams) => {
     windMeasureUnits = "м/с";
   }
   tempLanguage = weatherParams.lang;
+
+  if (isSetupLocalStorage) saveParamsToStore(weatherParams);
 };
 // const startApp = async (e) => {
 //   e.preventDefault();
@@ -192,15 +186,21 @@ const setUpLocalWeatherParams = (weatherParams) => {
 const startApp = async (e) => {
   e.preventDefault();
   const elements = e.currentTarget.elements;
-  const weatherParams = getWeatherParams(elements);
-  setUpLocalWeatherParams(weatherParams);
+  const weatherParams = e.isTrusted
+    ? getWeatherParams(elements)
+    : getParamsFromStorage();
+  setUpLocalWeatherParams(weatherParams, e.isTrusted);
+
+  if (!e.isTrusted) {
+    Object.entries(weatherParams).forEach(
+      ([name, value]) => (e.currentTarget[name].value = value)
+    );
+  }
   const weatherApiURL = makeRequestURL(weatherParams);
   const data = await getWeather(weatherApiURL);
-  if (weatherParams.isForecast) {
-    makeForecastApp(prepareForecastData(data));
-  } else {
-    makeCurrentWeatherApp(prepareWeatherData(data));
-  }
+
+  if (weatherParams.isForecast) makeForecastApp(prepareForecastData(data));
+  else makeCurrentWeatherApp(prepareWeatherData(data));
 };
 weatherParamsForm.addEventListener("change", startApp);
 
