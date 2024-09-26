@@ -1,5 +1,10 @@
 import { getWeather } from "./model.js";
+import { getWeatherIconPath } from "./model.js";
+import { createWeatherCard } from "./model.js";
 import { makeRequestURL } from "./controller.js";
+import { getWeatherParams } from "./controller.js";
+import { prepareWeatherData } from "./controller.js";
+import { prepareForecastData } from "./controller.js";
 // делаем приложение на основе погоды
 let tempUnitSymbol;
 let windMeasureUnits;
@@ -56,6 +61,7 @@ const prepareWeatherData = (data) => {
     snow: data.snow,
   };
 };
+
 //пример выполнения
 // const prepareForecastData = (data) => {
 //   const arrayWeather = [];
@@ -81,9 +87,11 @@ const prepareWeatherData = (data) => {
 //   });
 //   return arrayWeather;
 // };
+
 const prepareForecastData = (data) => {
   return data.list.map((weatherItem) => prepareWeatherData(weatherItem));
 };
+
 const getWeatherIconPath = (iconCode) =>
   "http://openweathermap.org/img/wn/" + iconCode + "@2x.png";
 
@@ -117,7 +125,7 @@ const createWeatherCard = (data, isForecast) => {
   ).textContent = `${weatherDictionary[tempLanguage].feelsLike} ${data.main.feelsLike}`;
   weatherCard.querySelector(
     ".card-wind"
-  ).textContent = `${weatherDictionary[tempLanguage].wind} ${data.wind.speed} ${windMeasureUnits}. 
+  ).textContent = `${weatherDictionary[tempLanguage].wind} ${data.wind.speed} ${windMeasureUnits}.
   ${weatherDictionary[tempLanguage].gust} ${data.wind.gust} ${windMeasureUnits}`;
   const rainContainer = weatherCard.querySelector(".card-rain");
   if (data.rain) {
