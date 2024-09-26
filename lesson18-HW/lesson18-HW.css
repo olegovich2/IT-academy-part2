@@ -16,6 +16,11 @@ section {
     height: 35px;
     border-radius: 10px;
 }
+#input_field {
+    width: 100%;
+    height: 35px;
+    border-radius: 10px;
+}
 #mission_submit,
 #search {
     width: 20%;

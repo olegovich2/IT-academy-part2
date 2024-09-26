@@ -1,5 +1,3 @@
-import { deleteChildren } from "./synchronization.js";
-import { cardOutput } from "./synchronization.js";
 const clearLocalStorage = () => {
   for (const key in localStorage) {
     if (key.indexOf("task") === -1 && localStorage.hasOwnProperty(key)) {
@@ -51,10 +49,17 @@ export const createCardForTask = (key, value) => {
   newMission.appendChild(buttonDelete);
   output.appendChild(newMission);
 };
+const cardOutputOnLoad = () => {
+  for (const key in localStorage) {
+    if (localStorage.hasOwnProperty(key)) {
+      let value = localStorage.getItem(key);
+      createCardForTask(key, value);
+    }
+  }
+};
 
-/*запускаем скрипт после загрузки DOM */
 document.addEventListener("DOMContentLoaded", () => {
+  cardOutputOnLoad();
   const form = document.querySelector("#input_form");
   form.addEventListener("submit", addKeyToLocalStorage);
 });
-cardOutput();
