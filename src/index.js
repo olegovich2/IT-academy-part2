@@ -1,1 +1,3 @@
-console.log("hello from webpack1");
+import "./style.scss";
+
+console.log("hello from webpack11");

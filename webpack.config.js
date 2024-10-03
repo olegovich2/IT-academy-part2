@@ -1,10 +1,16 @@
 const path = require("path");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const PATHS = {
+  SRC: path.join(__dirname, "src"),
+  DIST: path.join(__dirname, "dist"),
+  PUBLIC: path.join(__dirname, "public"),
+};
 module.exports = {
-  entry: "./src/index.js",
+  entry: path.resolve(PATHS.SRC, "index.js"),
   output: {
     filename: "[name].[fullhash].js",
-    path: path.resolve(__dirname, "dist"),
+    path: path.resolve(PATHS.DIST),
+    clean: true,
   },
   module: {
     rules: [
@@ -44,5 +50,10 @@ module.exports = {
       },
     ],
   },
-  plugins: [new CleanWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve(PATHS.PUBLIC, "index.html"),
+      inject: "body",
+    }),
+  ],
 };
