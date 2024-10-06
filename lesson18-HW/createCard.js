@@ -10,7 +10,7 @@ const addKeyToLocalStorage = (event) => {
   let symbols =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!№;%:?*()_+=";
   let password = "";
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 8; i++) {
     password += symbols.charAt(Math.floor(Math.random() * symbols.length));
   }
   const key = `task-${password}`;
