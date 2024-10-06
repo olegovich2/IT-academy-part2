@@ -1,12 +1,34 @@
+export const tasksStorageKey = "tasks";
+
 const clearLocalStorage = () => {
   for (const key in localStorage) {
-    if (key.indexOf("task") === -1 && localStorage.hasOwnProperty(key)) {
+    if (key.indexOf("tasks") === -1) {
       localStorage.removeItem(key);
+      const object = {};
+      localStorage.setItem(tasksStorageKey, JSON.stringify(object));
+    }
+    if (key.indexOf("tasks") !== -1 && localStorage.hasOwnProperty(key)) return;
+  }
+};
+
+export const getObjectFromLocalStorage = () => {
+  for (const key in localStorage) {
+    if (key === tasksStorageKey) {
+      return JSON.parse(localStorage.getItem(key));
     }
   }
 };
+
+export const deleteChildren = () => {
+  const outputChildren = document.querySelector(".output");
+  while (outputChildren.firstChild) {
+    outputChildren.removeChild(outputChildren.firstChild);
+  }
+};
+
 const addKeyToLocalStorage = (event) => {
   clearLocalStorage();
+  const object = getObjectFromLocalStorage();
   let symbols =
     "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!№;%:?*()_+=";
   let password = "";
@@ -16,14 +38,18 @@ const addKeyToLocalStorage = (event) => {
   const key = `task-${password}`;
   event.preventDefault();
   const inputMission = document.querySelector("#input_field_mission");
-  localStorage.setItem(key, inputMission.value);
+  object[key] = inputMission.value;
+  localStorage.setItem(tasksStorageKey, JSON.stringify(object));
   event.target.reset();
-  return getKeyFromLocalStorage(key);
+  return getKeyFromLocalStorage();
 };
 
-const getKeyFromLocalStorage = (key) => {
-  const value = localStorage.getItem(key);
-  return createCardForTask(key, value);
+const getKeyFromLocalStorage = () => {
+  deleteChildren();
+  const object = getObjectFromLocalStorage();
+  for (const key in object) {
+    createCardForTask(key, object[key]);
+  }
 };
 
 export const createCardForTask = (key, value) => {
@@ -49,17 +75,13 @@ export const createCardForTask = (key, value) => {
   newMission.appendChild(buttonDelete);
   output.appendChild(newMission);
 };
-const cardOutputOnLoad = () => {
-  for (const key in localStorage) {
-    if (localStorage.hasOwnProperty(key)) {
-      let value = localStorage.getItem(key);
-      createCardForTask(key, value);
-    }
-  }
-};
 
 document.addEventListener("DOMContentLoaded", () => {
-  cardOutputOnLoad();
-  const form = document.querySelector("#input_form");
+  getKeyFromLocalStorage();
+  const form = document.querySelector("#submit_form");
   form.addEventListener("submit", addKeyToLocalStorage);
+});
+
+window.addEventListener("storage", (event) => {
+  if (event.key === tasksStorageKey) getKeyFromLocalStorage();
 });

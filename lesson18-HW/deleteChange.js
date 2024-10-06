@@ -1,16 +1,22 @@
+import { tasksStorageKey } from "./createCard.js";
+import { getObjectFromLocalStorage } from "./createCard.js";
 /*функция изменения задачи */
 const changeMission = (element, index) => {
+  const object = getObjectFromLocalStorage();
   let tagP = element.closest("[data-action = 'newMission']").children[index];
   let newValue = prompt("Enter the new task name");
-  localStorage.setItem(tagP.dataset.action, newValue);
+  object[tagP.dataset.action] = newValue;
+  localStorage.setItem(tasksStorageKey, JSON.stringify(object));
   tagP.textContent = newValue;
 };
 
 /*функция удаления задачи */
 const deleteMission = (element, index) => {
+  const object = getObjectFromLocalStorage();
   let containerForMission = element.closest("[data-action = 'newMission']");
   let tagP = element.closest("[data-action = 'newMission']").children[index];
-  localStorage.removeItem(tagP.dataset.action);
+  delete object[tagP.dataset.action];
+  localStorage.setItem(tasksStorageKey, JSON.stringify(object));
   containerForMission.remove();
 };
 
