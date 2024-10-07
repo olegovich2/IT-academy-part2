@@ -1,360 +1,599 @@
 html {
-    scrollbar-color: rgb(246, 82, 97) rgb(35, 35, 35);    
-  }
-  
+  scrollbar-color: rgb(246, 82, 97) rgb(35, 35, 35);
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Montserrat', sans-serif;
-        font-weight: 900;
-    font-size: 18px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 900;
+  font-size: 18px;
 }
-  
+
 .containerForContent {
-    padding: 2px;
-    margin: 0;
-    background-color: rgb(35, 35, 35);
+  padding: 2px;
+  margin: 0;
+  background-color: rgb(35, 35, 35);
 }
 
-  h1 {
-    position: relative;
-    margin: 0;
-    padding: 30px 0;
-    text-align:left;
-    height: 46px;
-    width: auto;
-    color: rgb(228, 228, 228);
-    font-weight: 400;
-  }
+h1 {
+  position: relative;
+  margin: 0;
+  padding: 30px 0;
+  text-align: left;
+  height: 46px;
+  width: auto;
+  color: rgb(228, 228, 228);
+  font-weight: 400;
+}
+
+.full-screen {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  flex-flow: row wrap;
+}
+
+.full-screen__body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: rgba(35, 35, 35, 0.3);
+}
+
+.full-screen__caption {
+  text-align: center;
+}
+
+.full-screen__img {
+  position: absolute;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  min-height: 80vh;
+  object-fit: cover;
+}
+
+.netflix_header {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 20px;
+  left: 75px;
+}
+
+.button_add_movie {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  top: 20px;
+  right: 75px;
+  height: 46px;
+  width: 177px;
+  background-color: rgba(96, 96, 96, 0.68);
+  color: rgb(246, 82, 97);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.navbar__search__input {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  top: 0;
+  left: 0;
+  height: 57px;
+  width: 713px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgba(50, 50, 50, 0.8);
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  color: rgb(228, 228, 228);
+  font-size: 18px;
+}
+
+.navbar__search__button {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 57px;
+  width: 150px;
+  top: 0;
+  left: 0;
+  background-color: rgb(246, 82, 97);
+  color: rgb(228, 228, 228);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  transition: 0.4s;
+}
+
+.navbar__search__button:hover,
+.button_add_movie:hover {
+  box-shadow: 0 0 5px 7px rgba(228, 228, 228, 1);
+  font-weight: 700;
+}
+
+.navbar__search__input:focus {
+  box-shadow: 0 0 5px 7px rgba(228, 228, 228, 1);
+}
+
+.container {
+  position: sticky;
+  top: 0;
+  left: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'navbar_list_left navbar_list_right';
+  gap: 350px;
+  background-color: rgba(35, 35, 35);
+  margin: 0;
+  padding: 0;
+  padding-left: 30px;
+  max-height: 65px;
+}
+
+#navbar_list_left {
+  grid-area: navbar_list_left;
+}
+
+#navbar_list_right {
+  grid-area: navbar_list_right;
+}
+
+.navbar__list__ul_left {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 15px;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.navbar__list__ul_right {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.navbar__list__ul_left button,
+.navbar__list__ul_right button,
+.navbar__list__ul_right select {
+  border: none;
+  background-color: rgba(35, 35, 35);
+}
+
+.navbar__list__li {
+  list-style-type: none;
+  cursor: pointer;
+}
+
+.navbar__list__link {
+  display: flex;
+  height: 56px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: rgb(228, 228, 228);
+  transition: 0.3s;
+}
+
+.navbar__list__ul_left button:focus,
+.navbar__list__ul_left button:hover,
+.navbar__list__ul_right button:focus,
+.navbar__list__ul_right button:hover,
+.navbar__list__ul_right select:focus,
+.navbar__list__ul_right select:hover {
+  border-bottom: 2px solid rgb(246, 82, 97);
+  cursor: pointer;
+}
+
+.main {
+  position: relative;
+}
+
+.section {
+  padding: 5px 10px;
+  margin: 0;
+  background-color: rgb(35, 35, 35);
+}
+
+.main_content {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.points {
+  padding: 50px 0;
+}
+
+.points_container {
+  max-width: 1200px;
+  padding: 0 15px;
+  margin: 0px auto;
+}
+
+.points_body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+
+}
+
+.card-orientation {
+  position: relative;
+  padding: 0;
+  margin: 20px;
+  border: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.img {
+  position: relative;
+  top: 0;
+  left: 0;
+  height: auto;
+}
+
+.card_caption {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  color: rgba(228, 228, 228, 1);
+}
+
+.caption_movie {
+  float: left;
+  padding: 10px 0;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+  opacity: 70%;
+
+}
+
+.release_year_movie {
+  float: right;
+  font-size: 12px;
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid rgba(228, 228, 228, 1);
+  border-radius: 10px;
+}
+
+.card_genre {
+  width: 100%;
+  padding: 0;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: left;
+  opacity: 50%;
+  color: rgb(228, 228, 228);
+
+}
+
+.footer {
+  background-color: rgba(50, 50, 50, 0.95);
+  text-align: center;
+  padding: 20px;
+}
+
+.card:hover {
+  box-shadow: 0 0 2px 2px rgba(228, 228, 228, 1);
+}
+
+.delete_blur,
+.congratulation_blur {
+  position: fixed;
+  top: 0;
+  background: rgba(35, 35, 35, 0.7);
+  backdrop-filter: blur(4px);
+  width: 100%;
+  height: 100vh;
+  z-index: 9;
+}
+
+.modal_window_delete,
+.modal_window_congratulation {
+  position: fixed;
+  width: 40%;
+  height: auto;
+  top: 30%;
+  left: 30%;
+  right: 30%;
+  background: rgba(35, 35, 35);
+  color: rgb(228, 228, 228);
+  z-index: 10;
+}
+
+.close_button {
+  float: right;
+  margin: 5px;
+  padding: 5px;
+  font-size: 30px;
+  background: rgb(35, 35, 35);
+  color: rgb(228, 228, 228);
+}
+
+.caption_modal_delete {
+  margin: 35px;
+  font-size: 40px;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+.p_modal_delete {
+  margin: 35px;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.window_delete_button {
+  float: right;
+  width: 150px;
+  height: 50px;
+  margin: 25px;
+  text-align: center;
+  background-color: rgb(246, 82, 97);
+  color: rgb(228, 228, 228);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 20px;
+  transition: 0.4s;
+}
+
+.modal_window_congratulation {
+  padding: 10px 30px;
+}
+
+.check_round {
+  position: relative;
+  width: 50px;
+  height: 50px;
+  border-radius: 50px;
+  text-align: center;
+  background-color: rgb(246, 82, 97);
+  margin: 30px 180px;
+}
+
+.check_icon {
+  font-size: 50px;
+}
+
+.caption_modal_congratulation {
+  text-align: center;
+  font-weight: 300;
+  font-size: 40px;
+}
+
+.p_modal_congratulation {
+  text-align: center;
+  font-weight: 400;
+  font-size: 20px;
+}
+
+/* add movie */
+.caption_modal_add_movie {
+  margin: 20px;
+  padding: 0;
+  font-weight: 300;
+  font-size: 40px;
+  letter-spacing: 1px;
+  color: rgb(255, 255, 255)
+}
+
+.modal_window_add_movie {
+  position: fixed;
+  width: 80%;
+  height: auto;
+  top: 5%;
+  left: 10%;
+  right: 10%;
+  background: rgba(35, 35, 35);
+  color: rgb(228, 228, 228);
+  z-index: 10;
+}
+
+.orientation_add_movie {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.fields {
+  margin: 0 20px;
+  padding: 0;
+}
+
+.fields p {
+  padding: 0;
+  margin: 0;
+  color: rgb(246, 82, 97);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.89px;
+}
+
+
+.input_modal_add {
+  width: 100%;
+  height: 30px;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  background: rgba(50, 50, 50, 0.95);
+}
+.input_modal_select {
+  width: 69%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  background: rgba(50, 50, 50, 0.95);
+}
+.modal_select_submit {
+  width: 30%;
+  height: 30px;
+  margin: 0;
+  padding: 0;
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  border: 1px solid rgb(246, 82, 97);
+  color: rgb(255, 255, 255);
+  background: rgba(35, 35, 35);
+}
+
+.fields_textarea {
+  margin: 20px;
+  padding: 0;
+}
+
+.fields_textarea p {
+  margin: 0;
+  padding: 0;
+  color: rgb(246, 82, 97);
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: 0.89px;
+}
+
+.textarea_modal_add {
+  width: 100%;
+  height: 100px;
+  border: none;
+  border-radius: 4px;
+  color: rgb(255, 255, 255);
+  background: rgba(50, 50, 50, 0.95);
+}
+
+.modal_add_buttons {
+  float: right;
+  margin: 20px;
+  padding: 0;
+}
+
+.modal_add_reset {
+  width: 160px;
+  height: 30px;
+  margin: 0 10px;
+  border: none;
+  border-radius: 4px;
+  border: 1px solid rgb(246, 82, 97);
+  color: rgb(255, 255, 255);
+  background: rgba(35, 35, 35);
+}
+
+.modal_add_submit {
+  width: 160px;
+  height: 30px;
+  margin: 0;
+  border: none;
+  border-radius: 4px;
+  border: 1px solid rgb(246, 82, 97);
+  color: rgb(255, 255, 255);
+  background: rgb(246, 82, 97);
+}
+
+@media screen and (max-width: 999px) {
   .full-screen {
-    position: relative;
-    min-height: 80vh;
-    display: flex;
-    flex-direction: column;
     margin: 0;
-    flex-flow: row wrap;    
+    min-height: 60vh;
   }
-  
-  .full-screen__body {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    flex: 1 1 auto;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: rgba(35, 35, 35, 0.3);
-  }
-  
+
   .full-screen__caption {
-    text-align: center;
+    font-size: 40px;
   }
-  
+
   .full-screen__img {
-    position: absolute;
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    min-height: 80vh;
-    object-fit: cover;
-  }
-  .netflix_header {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 20px;
-    left: 75px;
-  }
-  .button_add_movie {
-    position: absolute;
-    margin: 0;
-    padding: 0;
-    top: 20px;
-    right: 75px;
-    height: 46px;
-    width: 177px;
-    background-color: rgba(96, 96, 96, 0.68);
-    color: rgb(246, 82, 97);
-    border: none;
-    border-radius: 4px;    
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    transition: 0.4s;
-  }
-  
-  .navbar__search__input {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    top: 0;
-    left: 0;
-    height: 57px;
-    width: 713px;
-    border: none;
-    border-radius: 4px;
-    background-color: rgba(50, 50, 50, 0.8);
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-        font-weight: 400;
-        color: rgb(228, 228, 228);
-    font-size: 18px;
-  }
-  
-  .navbar__search__button {
-    position: relative;
-    margin: 0;
-    padding: 0;
-    height: 57px;
-    width: 150px;
-    top: 0;
-    left: 0;
-    background-color: rgb(246, 82, 97);
-    color: rgb(228, 228, 228);
-    border: none;
-    border-radius: 4px;    
-    cursor: pointer;
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 400;
-    font-size: 18px;
-    transition: 0.4s;
-  }
-  
-  .navbar__search__button:hover,
-  .button_add_movie:hover {
-    box-shadow: 0 0 5px 7px rgba(228, 228, 228, 1);
-    font-weight: 700;
-  }
-  
-  .navbar__search__input:focus {
-    box-shadow: 0 0 5px 7px rgba(228, 228, 228, 1);
-  }
-  .container {
-    position: sticky;
-    top: 0;
-    left: 0;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
-      'navbar_list_left navbar_list_right';
-      gap: 350px;
-    background-color: rgba(35, 35, 35);
-    margin: 0;
-    padding: 0;
-    padding-left: 30px;
-    max-height: 65px;
-    z-index: 100;
-  }
-  #navbar_list_left {
-    grid-area: navbar_list_left;
-  }
-  #navbar_list_right {
-    grid-area: navbar_list_right;
-  }
-  .navbar__list__ul_left {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    gap: 15px;
-    margin: 0;
-    padding: 4px 0;
-  }
-  .navbar__list__ul_right {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    margin: 0;
-    padding: 4px 0;
-  }
-  .navbar__list__ul_left button,
-  .navbar__list__ul_right button,
-  .navbar__list__ul_right select{    
-    border: none;
-    background-color: rgba(35, 35, 35);
-  }
-  
-  .navbar__list__li {
-    list-style-type: none;
-    cursor: pointer;
-  }
-  
-  .navbar__list__link {
-    display: flex;
-    height: 56px;
-    text-decoration: none;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: rgb(228, 228, 228);
-    transition: 0.3s;
-  }
-  .navbar__list__ul_left button:focus,
-  .navbar__list__ul_left button:hover,
-  .navbar__list__ul_right button:focus,
-  .navbar__list__ul_right button:hover,
-  .navbar__list__ul_right select:focus,
-  .navbar__list__ul_right select:hover {
-    border-bottom: 2px solid rgb(246, 82, 97);
-    cursor: pointer;
+    min-height: 60vh;
   }
 
-  .main {
-    position: relative;
-  }
-  
   .section {
-    padding: 5px 10px;
     margin: 0;
-    background-color: rgb(35, 35, 35);
-  }
-  
-  .main_content {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .points {
-    padding: 50px 0;
-  }
-  
-  .points_container {
-    max-width: 1200px;
-    padding: 0 15px;
-    margin: 0px auto;
-  }
-  
-  .points_body {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-  
-  }
-  
-  .card-orientation {
-    position: relative;
-    padding: 0;
-    margin: 20px;
-    border: none;
-  }
-   
-  .card {
-    display: flex;
-    flex-direction: column;
   }
 
-  .img {
-    position: relative;
-    top: 0;
+  .card-orientation_active {
     left: 0;
-    height: auto;
-  }  
-  .card h3 {
-    font-size: 16px;
-    text-align: left;
+    right: 0;
   }
-  .release_year_movie {
-    font-size: 12px;
-    margin: 0;
-    padding: 5px;
-    float: right;
-    border: 1px solid rgba(228, 228, 228, 1);
-    border-radius: 10px;
-  }
-  .card_genre {
-    font-size: 12px;
-    text-align: left;
-  }
-  .card_overview {
 
+  .close_button {
+    right: 10px;
   }
-      
-  .hello,
-  .card_caption {
-    text-align: center;
-    margin: 0;
-    padding: 0;
-    color: rgba(228, 228, 228, 1);
+}
+
+@media screen and (max-width: 420px) {
+
+  .full-screen,
+  .full-screen__img {
+    min-height: 40vh;
   }
-  
-    
-  .footer {
-    background-color: rgba(50, 50, 50, 0.95);
-    text-align: center;
-    padding:20px;
+
+  .full-screen__caption {
+    font-size: 30px;
   }
-  .card:hover {
-    box-shadow: 0 0 2px 2px rgba(228, 228, 228, 1);
+
+  .card-orientation_active {
+    left: 0;
+    right: 0;
   }
-  
-  @media screen and (max-width: 999px) {
-    .full-screen {
-      margin: 0;
-      min-height: 60vh;
-    }
-  
-    .full-screen__caption {
-      font-size: 40px;
-    }
-  
-    .full-screen__img {
-      min-height: 60vh;
-    }
-  
-    .section {
-      margin: 0;
-    }
-  
-    .card-orientation_active {
-      left: 0;
-      right: 0;
-    }
-  
-    .close_button {
-      right: 10px;
-    }
+
+  .close_button {
+    right: 10px;
   }
-  
-  @media screen and (max-width: 420px) {
-  
-    .full-screen,
-    .full-screen__img {
-      min-height: 40vh;
-    }
-  
-    .full-screen__caption {
-      font-size: 30px;
-    }
-  
-    .card-orientation_active {
-      left: 0;
-      right: 0;
-    }
-  
-    .close_button {
-      right: 10px;
-    }
+}
+
+@media screen and (max-width: 280px) {
+
+  .full-screen,
+  .full-screen__img {
+    min-height: 20vh;
   }
-  
-  @media screen and (max-width: 280px) {
-  
-    .full-screen,
-    .full-screen__img {
-      min-height: 20vh;
-    }
-  
-    .full-screen__caption {
-      font-size: 20px;
-    }
-  
-    .card-orientation_active {
-      left: 0;
-      right: 0;
-    }
-  
-    .close_button {
-      right: 10px;
-    }
+
+  .full-screen__caption {
+    font-size: 20px;
   }
-  /*
+
+  .card-orientation_active {
+    left: 0;
+    right: 0;
+  }
+
+  .close_button {
+    right: 10px;
+  }
+}
+
+/*
   @media screen and (min-width: 1000px) {
     .menu__item {
       display: none;
@@ -399,4 +638,4 @@ body {
     width: 200px;
   }
   } */
-  /*  внутрянка*/
+/*  внутрянка*/
