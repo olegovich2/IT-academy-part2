@@ -4,17 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../src/lesson13-HW.css">
-    <link rel="stylesheet" href="../src/customCheckbox.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
     <script src="https://kit.fontawesome.com/d23624fc6e.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div class="containerForContent">
         <header class="full-screen">            
-            <div class="full-screen__body">
-                <img class="netflix_header" title="netflix-roulette" alt="netflix-roulette" src="../src/Images/netflixroulette copy.png">
-                <button class="button_add_movie" type="button">
+            <div class="full-screen__body" data-container="fullscreen">
+                <img class="netflix_header" title="netflix-roulette" alt="netflix-roulette" src="../Images/netflixroulette.png">
+                <button class="button_add_movie" data-button="button_add" type="button">
                     + ADD MOVIE
                 </button>
                 
@@ -28,8 +26,9 @@
                     </div>
                 </div>
             </div>
-            <img class="full-screen__img" src="../src/Images/Bitmap.png">
+            <img class="full-screen__img" src="../Images/Bitmap.png">
         </header>
+        <div data-modal="header_for_card"></div>        
         <nav class="container">
             <div id="navbar_list_left" class="navbar__list">
                 <ul class="navbar__list__ul_left">
@@ -70,88 +69,7 @@
                 <div class="main_content">
                     <div class="points">
                         <div class="points_container">
-                            <div class="points_body">
-                                <template>
-                                <div class="card-orientation">
-                                    <div class="card">
-                                        <img class="img" src="./Images/pulp_fiction.jpg" alt="Pulp Fiction" title="Pulp Fiction">
-                                        <div class="card_caption">
-                                            <div class="caption_movie">Pulp Fiction</div>
-                                            <div class="release_year_movie">2004</div>
-                                        </div>
-                                        <p class="card_genre">Action & Adventure</p>
-                                        <div class="card_content">                                             
-                                        <p class="card_overview"></p>
-                                    </div>
-                                    </div>
-                                </div>
-                            </template>
-                                <!-- <div class="card-orientation">
-                                    <div class="card">
-                                        <img class="img" src="../src/Images/bohemian_rhapsody.webp" alt="Bohemian Rhapsody" title="Bohemian Rhapsody">
-                                        <div class="card_caption">
-                                            <div class="caption_movie">Bohemian Rhapsody</div>
-                                            <div class="release_year_movie">2003</div>
-                                        </div>
-                                        <p class="card_genre">Drama, Biography, Music</p>
-                                        <div class="card_content">                                             
-                                        <p class="card_overview"></p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="card-orientation">
-                                    <div class="card">
-                                        <img class="img" src="../src/Images/Kill_Bill_vol2.jpg" alt="Kill Bill: Vol 2" title="Kill Bill: Vol 2">
-                                        <div class="card_caption">
-                                            <div class="caption_movie">Kill Bill: Vol 2</div>
-                                            <div class="release_year_movie">1994</div>
-                                        </div>
-                                        <p class="card_genre">Oscar winning Movie</p>
-                                        <div class="card_content">                                             
-                                        <p class="card_overview"></p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="card-orientation">
-                                    <div class="card">
-                                        <img class="img" src="../src/Images/avengers_infinity_war.jpg" alt="Avengers Infinity War" title="Avengers Infinity War">
-                                        <div class="card_caption">
-                                            <div class="caption_movie">Avengers: War of Infinity</div>
-                                            <div class="release_year_movie">2004</div>
-                                        </div>
-                                        <p class="card_genre">Action & Adventure</p>
-                                        <div class="card_content">                                             
-                                        <p class="card_overview"></p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="card-orientation">
-                                    <div class="card">
-                                        <img class="img" src="../src/Images/inception.webp" alt="Inception" title="Inception">
-                                        <div class="card_caption">
-                                            <div class="caption_movie">Inception</div>
-                                            <div class="release_year_movie">2004</div>
-                                        </div>
-                                        <p class="card_genre">Action & Adventure</p>
-                                        <div class="card_content">                                             
-                                        <p class="card_overview"></p>
-                                    </div>
-                                    </div>
-                                </div>
-                                <div class="card-orientation">
-                                    <div class="card">
-                                        <img class="img" src="../src/Images/reservoir-dogs.jpg" alt="Reservoir Dogs" title="Reservoir Dogs">
-                                        <div class="card_caption">
-                                            <div class="caption_movie">Reservoir Dogs</div>
-                                            <div class="release_year_movie">1994</div>
-                                        </div>
-                                        <p class="card_genre">Oscar winning Movie</p>
-                                        <div class="card_content">                                             
-                                        <p class="card_overview"></p>
-                                    </div>
-                                    </div>
-                                </div> -->
-                            </div>
+                            <div class="points_body" data-container="div_for_card"></div>
                         </div>
                     </div>
                 </div>
@@ -159,6 +77,109 @@
             
         </main>
     </div>
+    <div class="unvisible" data-modal="field_add_movie">
+        <div class="delete_blur"></div>
+        <form class="modal_window_add_movie">
+            <i class="fa-solid fa-xmark close_button"></i>        
+            <p class="caption_modal_add_movie">ADD MOVIE</p>
+            <div class="orientation_add_movie">
+            <div class="fields">
+                <p>TITLE</p>
+                <input class="input_modal_add" data-title="title_value" placeholder="Title">
+            </div>
+            <div class="fields">
+                <p>RELEASE DATE</p>
+                <div class="input_with_calendar">
+                    <input class="input_modal_add" type="date" data-release="release_value" placeholder="Select Date">
+                </div>
+            </div>
+            <div class="fields">
+                <p>MOVIE URL</p>
+                <input class="input_modal_add" type="url" name="url" id="modal_add_url" pattern="https://.*" data-url="url_value" placeholder="https://">
+            </div>
+            <div class="fields">
+                <p>RATING</p>
+                <input class="input_modal_add" data-rating="rating_value" placeholder="8.0">
+            </div>
+            <div class="fields">
+                <p>GENRE</p>
+                <input class="input_modal_select" placeholder="Select Genre" data-genre="form_add_input_value" value="">
+                <button class="modal_select_submit" data-genre="form_add_button" type="button">Select</button>
+                </div>
+            <div class="fields">
+                <p>RUNTIME</p>
+                <input class="input_modal_add" data-runtime="runtime_value" placeholder="minutes">
+            </div>
+        </div>
+        <div class="fields_textarea">
+            <p>OVERWIEW</p>
+            <textarea class="textarea_modal_add" data-owerwiew="owerwiew_value" rows="10" cols="110" name="text" placeholder="Movie description"></textarea>
+            </div>
+            <div class="modal_add_buttons">
+            <button class="modal_add_reset" type="button">Reset</button>
+            <button class="modal_add_submit" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+    <div class="unvisible" data-modal="field_select">
+        <div class="delete_blur"></div>
+        <form class="modal_window_select_genre">
+            <i class="fa-solid fa-xmark close_button"></i>        
+            <p class="caption_modal_add_movie">SELECT GENRE</p>
+            <div class="container_for_checkbox" data-container="checkboxesList"></div>
+                <div class="modal_add_buttons">
+                    <button class="modal_add_reset" type="button">Select</button>
+                </div>
+        </form> 
+    </div>
+    <template data-modal="card">
+        <div class="card-orientation">
+            <div class="card" data-container="card_movie">
+                <img class="img" src="./Images/pulp_fiction.jpg" alt="Pulp Fiction" title="Pulp Fiction" data-container="image">
+                <div class="card_caption">
+                    <div class="caption_movie" data-container="title"></div>
+                    <div class="unvisible" data-container="rating"></div>
+                    <div class="release_year_movie" data-container="release"></div>
+                </div>
+                <p class="card_genre" data-container="genres">Action & Adventure</p>
+                <div class="unvisible" data-container="runtime"></div>
+                <div class="card_content">                                             
+                <p class="card_overview unvisible" data-container="overview"></p>
+            </div>
+            </div>
+        </div>
+    </template>
+    <template data-modal="card_in_header">
+        <div class="orientation_component" data-container="components_card">
+            <div class="image_with_button">
+                <img class="netflix_in_card" title="netflix-roulette" alt="netflix-roulette"
+                    src="../Images/netflixroulette.png">
+                <button class="button_icon_search" type="button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+            </div>
+            <div class="card_in_header">
+                <img class="card_image_in_header" data-info="image_movie_in_header" src="./Images/pulp_fiction.jpg"
+                    alt="Pulp Fiction" title="Pulp Fiction"  data-container="image">
+                <div class="content_in_header">
+                    <div class="style_caption_in_header">
+                        <p data-info="caption_movie_in_header" data-container="title">Pulp Fiction</p>
+                        <p class="rating_movie_in_header" data-container="rating">8.9</p>
+                    </div>
+                    <div class="style_genre">
+                        <p data-info="genre_movie_in_header">Action & Adventure</p>
+                    </div>
+                    <div class="style_year_and_runtime">
+                        <p data-info="release_year_movie_in_header">2004</p>
+                        <p data-info="runtime_movie_in_header">2h 34min</p>
+                    </div>
+                    <div class="style_overview_in_header">
+                        <p data-info="card_overview"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</template>
     <template>
     <div data-modal="field_delete">
         <div class="delete_blur"></div>
@@ -180,52 +201,6 @@
             <p class="p_modal_congratulation">The movie has been added to database successfully</p>            
         </div>
     </div>
-</template>
-<template>
-<div data-modal="field_add_movie">
-    <div class="delete_blur"></div>
-    <form class="modal_window_add_movie">
-        <i class="fa-solid fa-xmark close_button"></i>        
-        <p class="caption_modal_add_movie">ADD MOVIE</p>
-        <div class="orientation_add_movie">
-        <div class="fields">
-            <p>TITLE</p>
-            <input class="input_modal_add" data-title="title_value" placeholder="Title">
-        </div>
-        <div class="fields">
-            <p>RELEASE DATE</p>
-            <div class="input_with_calendar">
-                <input class="input_modal_add" type="date" data-release="release_value" placeholder="Select Date">
-            </div>
-        </div>
-        <div class="fields">
-            <p>MOVIE URL</p>
-            <input class="input_modal_add" type="url" name="url" id="modal_add_url" pattern="https://.*" data-url="url_value" placeholder="https://">
-        </div>
-        <div class="fields">
-            <p>RATING</p>
-            <input class="input_modal_add" data-rating="rating_value" placeholder="8.0">
-        </div>
-        <div class="fields">
-            <p>GENRE</p>
-            <input class="input_modal_select" placeholder="Select Genre" data-genre="input_value" value="">
-            <button class="modal_select_submit" type="submit">Select</button>
-            </div>
-        <div class="fields">
-            <p>RUNTIME</p>
-            <input class="input_modal_add" data-runtime="runtime_value" placeholder="minutes">
-        </div>
-    </div>
-    <div class="fields_textarea">
-        <p>OVERWIEW</p>
-        <textarea class="textarea_modal_add" data-owerwiew="owerwiew_value" rows="10" cols="110" name="text" placeholder="Movie description"></textarea>
-        </div>
-        <div class="modal_add_buttons">
-        <button class="modal_add_reset" type="button">Reset</button>
-        <button class="modal_add_submit" type="submit">Submit</button>
-        </div>
-    </form>
-</div>
 </template>
 <template>
     <div data-modal="field_add_movie">
@@ -273,24 +248,9 @@
         </form>
     </div>
     </template>
-    <template>
-    <div data-modal="field_select">
-        <div class="delete_blur"></div>
-        <form class="modal_window_add_movie">
-            <i class="fa-solid fa-xmark close_button"></i>        
-            <p class="caption_modal_add_movie">SELECT GENRE</p>
-            <div class="container_for_checkbox" data-container="checkboxesList"></div>
-                <div class="modal_add_buttons">
-                    <button class="modal_add_reset" type="button">Select</button>
-                </div>
-        </form> 
-    </div>
-    </template>
     <footer class="footer">
-        <img title="netflix-roulette" alt="netflix-roulette" src="../src/Images/netflixroulette copy.png">
+        <img title="netflix-roulette" alt="netflix-roulette" src="../Images/netflixroulette.png">
     </footer>
 </body>
-<script src="../src/lesson13-HW.js"></script>
-<script src="../src/listGenre.js" type="module"></script>
-<script src="../src/controller.js" type="module"></script>
+
 </html>

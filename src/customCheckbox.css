@@ -1,6 +1,18 @@
+.modal_window_select_genre {
+  position: fixed;
+    width: 80%;
+    height: auto;
+    top: 5%;
+    left: 10%;
+    right: 10%;
+    background: rgba(35, 35, 35);
+    color: rgb(228, 228, 228);
+    z-index: 10;
+}
+
 .container_for_checkbox {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     width: 100%;
     margin: 0;
     padding: 0;
@@ -8,7 +20,7 @@
   }
   
   .genre_container {
-    margin: 5px 10px;
+    margin: 11px;
   }
   
   /* для элемента input c type="checkbox" */

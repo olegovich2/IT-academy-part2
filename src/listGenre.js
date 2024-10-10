@@ -1,6 +1,6 @@
 const listGenre = {
-	featureFilm: 'Feature film',
-	shortFilm: 'Short film',
+	featureFilm: 'Feature-film',
+	shortFilm: 'Short-film',
 	action: 'Action',
 	adventure: 'Adventure',
 	comedy: 'Comedy',
@@ -21,9 +21,10 @@ const listGenre = {
 	postApocalyptic: 'Post-apocalyptic',
 };
 
-export const newObject = {};
-
+const objectGenre = {};
+export const fieldSelect = document.querySelector("[data-modal='field_select']");
 const containerForCheckbox = document.querySelector("[data-container='checkboxesList']");
+export const inputGenre = document.querySelector("[data-genre='form_add_input_value']");
 
 const selectGenreFromObject = (object) => {
 	for (let key in object) {
@@ -48,16 +49,45 @@ const createGenre = (value) => {
 	containerForCheckbox.appendChild(newGenre);
 };
 
+const genreValueFromFieldSelect = (object) => {
+	let value = '';
+	for (const key in object) {
+		value += object[key] + ' ';
+	}
+	return value;
+};
+
 containerForCheckbox.onclick = function (event) {
 	let target = event.target;
 	let newKey = '';
+
 	if (target.tagName === 'INPUT' && target.checked) {
 		newKey = JSON.stringify(target.id);
-		newObject[newKey] = target.id;
+		objectGenre[newKey] = target.id;
 	}
 	if (target.tagName === 'INPUT' && !target.checked) {
 		newKey = JSON.stringify(target.id);
-		delete newObject[newKey];
+		delete objectGenre[newKey];
+	}
+};
+
+fieldSelect.onclick = function (event) {
+	let target = event.target;
+
+	if (target.tagName === 'I') {
+		fieldSelect.classList.toggle('unvisible');
+		for (let key in objectGenre) {
+			delete objectGenre[key];
+		}
+		const inputTypeCheckbox = document.querySelectorAll('[type="checkbox"]');
+		for (let i = 0; i < inputTypeCheckbox.length; i++) {
+			inputTypeCheckbox[i].checked = false;
+		}
+		inputGenre.value = genreValueFromFieldSelect(objectGenre);
+	}
+	if (target.tagName === 'BUTTON') {
+		fieldSelect.classList.toggle('unvisible');
+		inputGenre.value = genreValueFromFieldSelect(objectGenre);
 	}
 };
 
