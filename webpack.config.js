@@ -11,7 +11,6 @@ const PATHS = {
 module.exports = {
 	entry: path.resolve(PATHS.SRC, 'index.js'),
 	output: {
-		filename: '[name].[fullhash].js',
 		assetModuleFilename: 'assets/[name].[ext]',
 		publicPath: '/',
 		path: path.resolve(PATHS.DIST),
@@ -62,9 +61,7 @@ module.exports = {
 	plugins: [
 		new HtmlWebpackPlugin({
 			template: path.resolve(PATHS.PUBLIC, 'index.html'),
-		}),
-		new MiniCssExtractPlugin({
-			filename: '[name].[fullhash].css',
+			inject: 'body',
 		}),
 	],
 };
