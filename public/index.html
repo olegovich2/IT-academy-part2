@@ -29,34 +29,37 @@
             <img class="full-screen__img" src="../Images/Bitmap.png">
         </header>
         <div data-modal="header_for_card"></div>        
-        <nav class="container">
+        <nav class="container" data-filter="navigation">
             <div id="navbar_list_left" class="navbar__list">
                 <ul class="navbar__list__ul_left">
                     <li class="navbar__list__li">
-                        <button class="navbar__list__link" type="button">ALL</button>
+                        <button class="navbar__list__link" type="button" data-filter="">ALL</button>
                     </li>
                     <li class="navbar__list__li">
-                        <button class="navbar__list__link" type="button">DOCUMENTARY</button>
+                        <button class="navbar__list__link" type="button" data-filter="documentary">DOCUMENTARY</button>
                     </li>
                     <li class="navbar__list__li">
-                        <button class="navbar__list__link" type="button">COMEDY</button>
+                        <button class="navbar__list__link" type="button" data-filter="comedy">COMEDY</button>
                     </li>
                     <li class="navbar__list__li active">
-                        <button class="navbar__list__link" type="button">HORROR</button>
+                        <button class="navbar__list__link" type="button" data-filter="horror">HORROR</button>
                     </li>
                     <li class="navbar__list__li active">
-                        <button class="navbar__list__link" type="button">CRIME</button>
-                    </li>
+                        <button class="navbar__list__link" type="button" data-filter="crime">CRIME</button>
+                    </li>                    
                 </ul>
             </div>
             <div id="navbar_list_right" class="navbar__list">
                 <ul class="navbar__list__ul_right">
-                    <li class="navbar__list__li">
-                        <button class="navbar__list__link" type="button">SORT BY</button>
+                    <li class="navbar__list__li active">
+                        <button class="navbar__list__link" type="button" data-filter="filter">FILTER GENRE</button>
                     </li>
                     <li class="navbar__list__li">
-                        <select class="navbar__list__link" id="year">
-                            <option>RELEASE DATE</option>
+                        <select class="navbar__list__link" data-filter="sort">
+                            <option value="0">TITLE UP</option>
+                            <option value="1">TITLE DOWN</option>
+                            <option value="2">YEAR UP</option>
+                            <option value="3">YEAR DOWN</option>
                         </select>                        
                     </li>                    
                 </ul>
@@ -64,7 +67,7 @@
         </nav>
         <main class="main">            
             <section class="section">
-                <div class="count_movie"></div>
+                <div class="count_movie"><span id="counter">0</span> movies found</div>
                 
                 <div class="main_content">
                     <div class="points">
@@ -132,6 +135,10 @@
                 </div>
         </form> 
     </div>
+    <span class="loader"></span>
+    <section id="pagination" class="pagination">
+        <div id="pagination-container"></div>
+    </section>
     <template data-modal="card">
         <div class="card-orientation">
             <div class="card" data-container="card_movie">

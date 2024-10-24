@@ -1,3 +1,7 @@
+import { moviesEvent } from './utils';
+import { sortParams } from '../src/mainContent/filters/index';
+import { objectToSearchParams } from './utils';
+import { updateSearchParams } from './utils';
 const listGenre = {
 	featureFilm: 'Feature-film',
 	shortFilm: 'Short-film',
@@ -21,19 +25,20 @@ const listGenre = {
 	postApocalyptic: 'Post-apocalyptic',
 };
 
-const objectGenre = {};
+export const objectGenre = {};
 export const fieldSelect = document.querySelector("[data-modal='field_select']");
-const containerForCheckbox = document.querySelector("[data-container='checkboxesList']");
+export const containerForCheckbox = document.querySelector("[data-container='checkboxesList']");
 export const inputGenre = document.querySelector("[data-genre='form_add_input_value']");
+const filterGenre = document.querySelector('[data-filter="filter"]');
 
-const selectGenreFromObject = (object) => {
+export const selectGenreFromObject = (object) => {
 	for (let key in object) {
 		const value = object[key];
 		createGenre(value);
 	}
 };
 
-const createGenre = (value) => {
+export const createGenre = (value) => {
 	const newGenre = document.createElement('div');
 	newGenre.className = 'genre_container';
 	const input = document.createElement('input');
@@ -57,6 +62,21 @@ const genreValueFromFieldSelect = (object) => {
 	return value;
 };
 
+const genreValueFieldSelect = (object) => {
+	let valueForFetch = '';
+	const array = Object.values(object);
+	for (let i = 0; i < array.length; i++) {
+		let separator = '%2C%20';
+		if (array.length - 1 === i) {
+			separator = '';
+			valueForFetch += `${array[i]}${separator}`;
+		} else {
+			valueForFetch += `${array[i]}${separator}`;
+		}
+	}
+	return valueForFetch;
+};
+
 containerForCheckbox.onclick = function (event) {
 	let target = event.target;
 	let newKey = '';
@@ -70,24 +90,43 @@ containerForCheckbox.onclick = function (event) {
 		delete objectGenre[newKey];
 	}
 };
-
+export const clearObjectAndCheckboxes = (object) => {
+	for (let key in object) {
+		delete object[key];
+	}
+	const inputTypeCheckbox = document.querySelectorAll('[type="checkbox"]');
+	for (let i = 0; i < inputTypeCheckbox.length; i++) {
+		inputTypeCheckbox[i].checked = false;
+	}
+};
 fieldSelect.onclick = function (event) {
 	let target = event.target;
-
+	const sort = document.querySelector('[data-filter="sort"]');
 	if (target.tagName === 'I') {
 		fieldSelect.classList.toggle('unvisible');
-		for (let key in objectGenre) {
-			delete objectGenre[key];
+		clearObjectAndCheckboxes(objectGenre);
+		if (fieldSelect.classList[0] !== 'filter') {
+			inputGenre.value = genreValueFromFieldSelect(objectGenre);
 		}
-		const inputTypeCheckbox = document.querySelectorAll('[type="checkbox"]');
-		for (let i = 0; i < inputTypeCheckbox.length; i++) {
-			inputTypeCheckbox[i].checked = false;
+		if (fieldSelect.classList[0] === 'filter') {
+			filterGenre.value = genreValueFieldSelect(objectGenre);
+			const searchOption = { filter: filterGenre.value, ...sortParams[sort.value] };
+			const searchParams = objectToSearchParams(searchOption);
+			window.history.pushState(undefined, '', window.location.origin + searchParams);
+			moviesEvent();
+			fieldSelect.classList.toggle('filter');
 		}
-		inputGenre.value = genreValueFromFieldSelect(objectGenre);
 	}
 	if (target.tagName === 'BUTTON') {
 		fieldSelect.classList.toggle('unvisible');
-		inputGenre.value = genreValueFromFieldSelect(objectGenre);
+		if (fieldSelect.classList[0] !== 'filter') {
+			inputGenre.value = genreValueFromFieldSelect(objectGenre);
+		}
+		if (fieldSelect.classList[0] === 'filter') {
+			filterGenre.value = genreValueFieldSelect(objectGenre);
+			updateSearchParams({ filter: filterGenre.value, ...sortParams[sort.value], offset: 0 });
+			fieldSelect.classList.toggle('filter');
+		}
 	}
 };
 
