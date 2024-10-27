@@ -35,6 +35,6 @@ filtersContainer.addEventListener('click', (event) => {
 	if (element.dataset.filter !== 'sort' && element.dataset.filter !== 'filter') {
 		clearObjectAndCheckboxes(objectGenre);
 		const filterValue = element.dataset.filter;
-		updateSearchParams({ filter: filterValue, ...sortParams[sort.value], offset: 0 });
+		updateSearchParams({ filter: filterValue, ...sortParams[sort.value], offset: 0, search: undefined, searchBy: undefined });
 	}
 });

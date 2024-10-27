@@ -295,7 +295,23 @@ html {
     color: rgb(228, 228, 228);
   
   }
-  
+  .card_options {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 20px;
+    padding-bottom: 8px;
+    border-radius: 100%;
+    background-color: rgba(50, 50, 50, 0.95);
+    color:rgb(246, 82, 97);
+    border: none;
+    font-size: 10px;
+    transform: rotate(90deg);
+    z-index: 10;
+    transition: 0.5s;
+    /* opacity: 0; */
+  }
   .footer {
     background-color: rgba(50, 50, 50, 0.95);
     text-align: center;
@@ -305,7 +321,10 @@ html {
   .card:hover {
     box-shadow: 0 0 2px 2px rgba(228, 228, 228, 1);
   }
-  
+  .card:hover .card_options{
+    z-index: 10;
+    opacity: 1;
+  }
   .delete_blur,
   .congratulation_blur {
     position: fixed;

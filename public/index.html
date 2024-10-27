@@ -18,12 +18,12 @@
                 
                 <div class="full-screen__caption">
                     <h1>FIND YOUR MOVIE</h1>
-                    <div id="navbar_search" class="navbar__search">
-                            <input class="navbar__search__input" type="text" placeholder="What do you want to watch?">
-                            <button class="navbar__search__button" type="button">
+                    <form id="navbar_search" class="navbar__search">
+                            <input class="navbar__search__input" type="text" placeholder="What do you want to watch?" name="search">
+                            <button class="navbar__search__button" type="submit">
                                 SEARCH
                             </button>
-                    </div>
+                    </form>
                 </div>
             </div>
             <img class="full-screen__img" src="../Images/Bitmap.png">
@@ -137,10 +137,13 @@
     </div>
     <span class="loader"></span>
     <section id="pagination" class="pagination">
+        <button type="button" class="paginationArrow back"> &#171; </button>
         <div id="pagination-container"></div>
+        <button type="button" class="paginationArrow forward"> &#187;</button>
     </section>
     <template data-modal="card">
         <div class="card-orientation">
+            <button type="button" class="card_options" data-button="option">...</button>
             <div class="card" data-container="card_movie">
                 <img class="img" src="./Images/pulp_fiction.jpg" alt="Pulp Fiction" title="Pulp Fiction" data-container="image">
                 <div class="card_caption">

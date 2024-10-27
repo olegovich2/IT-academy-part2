@@ -124,7 +124,7 @@ fieldSelect.onclick = function (event) {
 		}
 		if (fieldSelect.classList[0] === 'filter') {
 			filterGenre.value = genreValueFieldSelect(objectGenre);
-			updateSearchParams({ filter: filterGenre.value, ...sortParams[sort.value], offset: 0 });
+			updateSearchParams({ filter: filterGenre.value, ...sortParams[sort.value], offset: 0, search: undefined, searchBy: undefined });
 			fieldSelect.classList.toggle('filter');
 		}
 	}

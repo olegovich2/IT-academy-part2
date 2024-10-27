@@ -1,34 +1,35 @@
 import { createPaginationItem } from './paginationItem';
-import { updateSearchParams, getCurrentSearchParamsObject } from '../../utils';
+import { updateSearchParams } from '../../utils';
 import { defaultSearchParams } from '../../api/constants';
-import { createPaginationArrows } from './paginationArrows';
+import { updatePaginationArrows } from './paginationArrows';
 
 const paginationContainerElement = document.querySelector('#pagination-container');
 const paginationElement = document.querySelector('#pagination');
 
-const paginationLimitDefault = 4;
-
-export const createPagination = (limit, offset, total) => {
-	const { offset: currentOffset } = getCurrentSearchParamsObject();
-	const currentPage = !currentOffset ? 0 : currentOffset / defaultSearchParams.limit;
-	paginationContainerElement.innerHTML = '';
-	createPaginationArrows(paginationElement);
-	const startPage = offset ? offset / limit : offset;
-	const paginationNumbers = Array.from(Array(Math.ceil(total / limit)).keys());
-	console.log(paginationNumbers);
-
-	const paginationLimit = paginationNumbers.includes(startPage + paginationLimitDefault) ? startPage + paginationLimitDefault : 1;
-
-	const paginationButtons = paginationNumbers
-		.slice(startPage, paginationLimit + 1)
-		.map((number) => createPaginationItem(number + 1, number === currentPage));
-
-	paginationContainerElement.append(...paginationButtons);
-};
-paginationElement?.addEventListener('click', (event) => {
-	const pagination = event.target.dataset.page;
+paginationElement?.addEventListener('click', (e) => {
+	const pagination = e.target.dataset.page;
 	if (!pagination) return;
+
 	updateSearchParams({
-		offset: pagination * defaultSearchParams.limit,
+		offset: (pagination - 1) * defaultSearchParams.limit,
 	});
 });
+
+export const createPagination = (limit, offset, total) => {
+	const totalPages = Math.ceil(total / limit); // Общее количество страниц
+	const currentPage = Math.floor(offset / limit) + 1; // Текущая страница
+
+	paginationContainerElement.innerHTML = '';
+	updatePaginationArrows(currentPage);
+
+	// Определяем диапазон страниц
+	const startPage = Math.max(1, currentPage - 2); // Начальная страница
+	const endPage = Math.min(totalPages, startPage === 1 ? 5 : currentPage + 2); // Конечная страница
+
+	// Создаем элементы пагинации
+	for (let page = startPage; page <= endPage; page++) {
+		const isCurrentPage = page === currentPage;
+		const paginationItem = createPaginationItem(page, isCurrentPage);
+		paginationContainerElement.appendChild(paginationItem);
+	}
+};

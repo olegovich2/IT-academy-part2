@@ -4,6 +4,7 @@ import './mainContent/filters/index';
 import { updateMoviesCounter } from './mainContent/moviesCounter';
 import { endLoading } from './utils';
 import { createPagination } from './mainContent/index';
+import './mainContent/search/index';
 export const initApp = (param) => {
 	getMovies(param).then((data) => {
 		updateMoviesCounter(data.totalAmount);

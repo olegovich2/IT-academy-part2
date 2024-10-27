@@ -10,5 +10,9 @@ document.addEventListener(movieEventName, () => {
 	const params = searchParamsToObj(window.location.search);
 	initApp(params);
 });
+window.addEventListener('popstate', () => {
+	const params = searchParamsToObj(window.location.search);
+	initApp(params);
+});
 // import './api/index';
 // import './mainContent/movies/movieCard';
