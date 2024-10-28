@@ -1,0 +1,105 @@
+html {
+    scrollbar-color: rgb(85, 210, 248) rgb(36, 129, 157);
+  }
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 900;
+}
+
+.header {
+    background-color: rgba(85, 210, 248, 0.701);
+    padding: 0;
+    margin: 0;
+    border-bottom: 5px solid rgba(36, 129, 157);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.svg_param {
+    width: 50px;
+    padding: 0 10px;
+    margin: 0;
+}
+
+h1 {
+    padding: 5px 0;
+    margin: 0;
+    vertical-align: middle;
+    text-align: center;
+    color: rgb(31, 116, 84);
+}
+
+.entry_button {
+    color: rgb(31, 116, 84);  
+    background-color: rgba(85, 210, 248, 0);
+    padding: 15px;
+    margin: 0;
+    margin-left: 60%;
+    border: none;
+    font-size: 22px;
+    float: right;
+    transition: 0.3s;
+}
+.entry_button:hover,
+.entry_button:focus,
+.navlist li:hover,
+.navlist li:focus,
+.navlist li:active {
+    color: rgba(228, 228, 228, 0.95);
+    background-color: rgba(36, 129, 157, 0.701);
+}
+
+.navbar {
+    padding: 0;
+    margin: 0;
+    background-color: rgba(36, 129, 157);
+    border-bottom: 5px solid rgba(36, 129, 157);
+}
+
+.navlist {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 5px;
+    padding: 0;
+    margin: 0;    
+}
+
+.navlist li {
+    padding: 20px;
+    margin: 0;
+    list-style-type: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: rgba(85, 210, 248, 0.701);
+    color: rgb(31, 116, 84); 
+    transition: 0.3s;
+}
+
+
+
+.main {
+    min-height: 100vh;
+    background-color: rgb(102, 135, 145);
+}
+
+.unvisible {
+    display: none;
+}
+
+.footer {
+    background-color: rgba(85, 210, 248, 0.701);
+    border-top: 5px solid rgba(36, 129, 157);
+    text-align: center;
+    padding: 10px;
+}
+
+.footer_content {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    color: rgb(31, 116, 84);
+}
