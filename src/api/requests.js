@@ -8,3 +8,7 @@ export const getMovies = (params) => {
 
 	return fetch(`${baseApiUrl}${searchParams}`).then(handleRequestResolve()).catch(handleRequestReject());
 };
+export const deleteMovie = (id) => {
+	startLoading();
+	return fetch(`${baseApiUrl}${id}`, { method: 'Delete' }).then(handleRequestResolve()).catch(handleRequestReject());
+};

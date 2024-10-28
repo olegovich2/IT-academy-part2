@@ -141,9 +141,17 @@
         <div id="pagination-container"></div>
         <button type="button" class="paginationArrow forward"> &#187;</button>
     </section>
+    <div class="unvisible" data-modal="buttons">
+        <div class="delete_blur"></div>
+        <div class="modal_window_delete">
+            <i class="fa-solid fa-xmark close_button"></i>
+            <button class="window_delete_button" type="button" data-button="edit">EDIT</button>
+            <button class="window_delete_button" type="button" data-button="delete">DELETE</button>
+        </div>
+    </div>
     <template data-modal="card">
         <div class="card-orientation">
-            <button type="button" class="card_options" data-button="option">...</button>
+            <button type="button" class="card_options" data-button="option" data-id=''>...</button>
             <div class="card" data-container="card_movie">
                 <img class="img" src="./Images/pulp_fiction.jpg" alt="Pulp Fiction" title="Pulp Fiction" data-container="image">
                 <div class="card_caption">

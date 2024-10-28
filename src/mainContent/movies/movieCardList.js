@@ -1,6 +1,8 @@
 import { createMovieCard } from './movieCard';
 
 const cardContainer = document.querySelector('[data-container="div_for_card"]');
+const buttonOptions = document.querySelector('[data-modal="buttons"]');
+const modalDeleteMovie = document.querySelector('[data-modal="buttons"]');
 
 export const createMovieCardList = (moviesList) => {
 	cardContainer.innerHTML = '';
@@ -8,8 +10,16 @@ export const createMovieCardList = (moviesList) => {
 	cardContainer.append(...moviesCards);
 };
 cardContainer?.addEventListener('click', (event) => {
-	console.log(event.target);
-
 	const isCardOptions = event.target;
-	console.log(isCardOptions);
+
+	if (isCardOptions.dataset.button === 'option') {
+		buttonOptions.classList.toggle('unvisible');
+	}
+});
+buttonOptions.addEventListener('click', (event) => {
+	if (event.target.tagName === 'I') buttonOptions.classList.toggle('unvisible');
+	if (event.target.dataset.button === 'delete') {
+	}
+	if (event.target.dataset.button === 'edit') {
+	}
 });
