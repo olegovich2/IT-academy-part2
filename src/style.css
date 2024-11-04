@@ -32,6 +32,13 @@ h1 {
     color: rgb(31, 116, 84);
 }
 
+h2 {
+    padding: 5px 0;
+    margin: 0;
+    vertical-align: middle;
+    text-align: center;
+}
+
 .entry_button {
     color: rgb(31, 116, 84);  
     background-color: rgba(85, 210, 248, 0);
@@ -79,7 +86,9 @@ h1 {
     transition: 0.3s;
 }
 
-
+.input_length {
+    width: 100%;
+}
 
 .main {
     min-height: 100vh;
@@ -89,7 +98,37 @@ h1 {
 .unvisible {
     display: none;
 }
-
+.active {
+    color: rgba(228, 228, 228, 0.95) !important;
+    background-color: rgba(36, 129, 157, 0.701) !important;
+}
+.header_for_print {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+}
+.header_for_print h1 {
+    color: black;
+}
+.content_survey {
+    display: block; 
+    padding: 5px;   
+}
+.content_survey p {
+    color: rgb(49, 43, 43);
+    width: 60%;
+    float: right;
+    margin: 0;
+    
+}
+.many_content_survey {
+    padding: 5px;
+    margin: 0;
+}
+.many_content_survey p{
+    color:rgb(49, 43, 43);
+}
 .footer {
     background-color: rgba(85, 210, 248, 0.701);
     border-top: 5px solid rgba(36, 129, 157);
