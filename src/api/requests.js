@@ -12,3 +12,9 @@ export const deleteMovie = (id) => {
 	startLoading();
 	return fetch(`${baseApiUrl}${id}`, { method: 'Delete' }).then(handleRequestResolve()).catch(handleRequestReject());
 };
+export const updateMovieById = (data) => {
+	startLoading();
+	return fetch(`${baseApiUrl}`, { method: 'PUT', body: JSON.stringify(data), headers: 'Content-Type: application/json' })
+		.then(handleRequestResolve())
+		.catch(handleRequestReject());
+};
