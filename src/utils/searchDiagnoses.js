@@ -1,7 +1,10 @@
 import { initApp } from '../app';
-const resultSurvey = document.querySelector('[data-result="resultSurvey"]');
-const diagnosticsList = [];
-const treatmentList = [];
+import { personalDataClone } from '../constants/respiratory';
+import { createElementsResultSurvey } from '../utils/createSurveyResult';
+import { putData } from '../api';
+
+let diagnosticsList = [];
+let treatmentList = [];
 export const sendDiagnoses = (param) => {
 	for (let i = 0; i < param.length; i++) {
 		initApp(param[i]);
@@ -16,9 +19,15 @@ export const acceptData = (data) => {
 	}
 	const diagnosticUniqueArray = Array.from(new Set(diagnosticsList));
 	const treatmentUniqyeArray = Array.from(new Set(treatmentList));
-	return arrayInDomElement(diagnosticUniqueArray, treatmentUniqyeArray);
+	if (data[0].title === personalDataClone.title[personalDataClone.title.length - 1]) {
+		diagnosticsList.length = 0;
+		treatmentList.length = 0;
+	}
+	personalDataClone.diagnostic = diagnosticUniqueArray;
+	personalDataClone.treatment = treatmentUniqyeArray;
+	return arrayInDomElement(personalDataClone);
 };
-const arrayInDomElement = (diagnosticUniqueArray, treatmentUniqyeArray) => {
-	resultSurvey.querySelector('[data-result="diagnostics"]').textContent = diagnosticUniqueArray.join(', ');
-	resultSurvey.querySelector('[data-result="treatment"]').textContent = treatmentUniqyeArray.join(', ');
+const arrayInDomElement = (object) => {
+	createElementsResultSurvey(object);
+	// putData();
 };

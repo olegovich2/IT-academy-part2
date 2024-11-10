@@ -1,12 +1,18 @@
 import { historyTaking } from '../utils/historyTaking';
 import { metaData } from '../utils/metaData';
+import { titleStates } from './allConstants';
+import { formFromRespiratoryAnamnesis, listRespiratory, tabRespiratory } from '../utils/logicTab';
+import { resultSurvey } from '../utils/createSurveyResult';
 
-const formFromRespiratoryAnamnesis = document.querySelector('[data-form="respiratory"]');
-const personalData = {};
-const mixDiagnoses = [];
-
-formFromRespiratoryAnamnesis.addEventListener('submit', (event) => {
+export let personalDataClone = {};
+export const handleRespiratory = (event) => {
 	event.preventDefault();
+	const personalData = {};
+	const mixDiagnoses = [];
+	const otherGuidelines = [];
+	const date = new Date();
+	personalData.date = date.toLocaleString('en-US', { hour12: false });
+
 	const nameSurname = event.target.elements.nameSurname.value;
 	personalData.nameSurname = nameSurname;
 
@@ -17,8 +23,7 @@ formFromRespiratoryAnamnesis.addEventListener('submit', (event) => {
 	personalData.temperature = `${temperature}\u00B0C`;
 
 	const weightBody = Number(event.target.elements.weightBody.value);
-	const volumeOfLiquid = weightBody * 25;
-	personalData.volumeOfLiquid = `${volumeOfLiquid}мл`;
+	otherGuidelines.push(`Обильное питье в объеме ${weightBody * 25}мл в сутки.`);
 
 	const soreThroat = Number(event.target.elements.soreThroat.value);
 	const plaquesTonsils = Number(event.target.elements.plaquesTonsils.value);
@@ -42,42 +47,42 @@ formFromRespiratoryAnamnesis.addEventListener('submit', (event) => {
 
 	if (sputum > 0) cough = 2;
 	if (daysDisease <= 28) {
-		if (runnyNose > 0 && pollinosis === 0) mixDiagnoses.push('Острый ринит?');
-		if (soreThroat > 0 && plaquesTonsils > 0) mixDiagnoses.push('Острый тонзиллит?');
-		if (soreThroat > 0 && plaquesTonsils === 0) mixDiagnoses.push('Острый фарингит?');
-		if (cough === 1) mixDiagnoses.push('Острый трахеит?');
-		if (cough === 2 && sputum > 0) mixDiagnoses.push('Острый бронхит?');
-		if (cough === 2 && sputum > 0 && dyspnoea > 20) mixDiagnoses.push('Острый обструктивный бронхит?');
-		if (cough === 2 && sputum > 0 && asthmaAttacks > 0) mixDiagnoses.push('Острый бронхиолит?');
-		if (cough === 2 && sputum > 0 && chestPainBreathing > 0) mixDiagnoses.push('Плеврит?');
-		if (cough === 2 && sputum > 0 && frequentPneumonia > 0) mixDiagnoses.push('Бронхоэктатическая болезнь легких?');
+		if (runnyNose > 0 && pollinosis === 0) mixDiagnoses.push(titleStates.acuteRhinitis);
+		if (soreThroat > 0 && plaquesTonsils > 0) mixDiagnoses.push(titleStates.acuteTonsillitis);
+		if (soreThroat > 0 && plaquesTonsils === 0) mixDiagnoses.push(titleStates.acutePharyngitis);
+		if (cough === 1) mixDiagnoses.push(titleStates.acuteTracheitis);
+		if (cough === 2 && sputum > 0) mixDiagnoses.push(titleStates.acuteBronchitis);
+		if (cough === 2 && sputum > 0 && dyspnoea > 20) mixDiagnoses.push(titleStates.acuteObstructiveBronchitis);
+		if (cough === 2 && sputum > 0 && asthmaAttacks > 0) mixDiagnoses.push(titleStates.acuteBronchiolitis);
+		if (cough === 2 && sputum > 0 && chestPainBreathing > 0) mixDiagnoses.push(titleStates.pleuritis);
+		if (cough === 2 && sputum > 0 && frequentPneumonia > 0) mixDiagnoses.push(titleStates.bronchoectaticLungCondition);
 	} else {
-		if (runnyNose > 0 && pollinosis === 0) mixDiagnoses.push('Хронический ринит?');
-		if (soreThroat > 0 && plaquesTonsils > 0) mixDiagnoses.push('Хронический тонзиллит?');
-		if (soreThroat > 0 && plaquesTonsils === 0) mixDiagnoses.push('Хронический фарингит?');
-		if (cough === 1) mixDiagnoses.push('Кашель, неясной этиологии?');
-		if (cough === 2 && sputum > 0) mixDiagnoses.push('Хронический бронхит?');
-		if (cough === 2 && sputum > 0 && dyspnoea > 20) mixDiagnoses.push('ХОБЛ?');
-		if (cough === 2 && sputum > 0 && asthmaAttacks > 0) mixDiagnoses.push('ХОБЛ?');
-		if (cough === 2 && sputum > 0 && frequentPneumonia > 0) mixDiagnoses.push('Бронхоэктатическая болезнь легких?');
+		if (runnyNose > 0 && pollinosis === 0) mixDiagnoses.push(titleStates.chronicRhinitis);
+		if (soreThroat > 0 && plaquesTonsils > 0) mixDiagnoses.push(titleStates.chronicTonsillitis);
+		if (soreThroat > 0 && plaquesTonsils === 0) mixDiagnoses.push(titleStates.chronicPharyngitis);
+		if (cough === 1) mixDiagnoses.push(titleStates.cough);
+		if (cough === 2 && sputum > 0) mixDiagnoses.push(titleStates.chronicBronchitis);
+		if (cough === 2 && sputum > 0 && dyspnoea > 20) mixDiagnoses.push(titleStates.copd);
+		if (cough === 2 && sputum > 0 && asthmaAttacks > 0) mixDiagnoses.push(titleStates.copd);
+		if (cough === 2 && sputum > 0 && frequentPneumonia > 0) mixDiagnoses.push(titleStates.bronchoectaticLungCondition);
 	}
-	if (bronchialAsthmaAnamnesis + asthmaAttacks === 2) mixDiagnoses.push('Бронхиальная астма?');
+	if (bronchialAsthmaAnamnesis + asthmaAttacks === 2) mixDiagnoses.push(titleStates.bronchialAsthma);
 	if (cough === 2 && sputum > 0 && dyspnoea > 20) {
-		if (hemoptysis === 0) mixDiagnoses.push('Внегоспитальная пневмония?');
-		if (hemoptysis === 1) mixDiagnoses.push('Внегоспитальная пневмония, осложненная кровохарканьем?');
+		if (hemoptysis === 0) mixDiagnoses.push(titleStates.pneumonia);
+		if (hemoptysis === 1) mixDiagnoses.push(titleStates.pneumoniaWithBloodThroating);
 		if (hemoptysis === 2)
 			mixDiagnoses.push(
-				'Внегоспитальная пневмония, осложненная кровохарканьем?',
-				'Туберкулез легких?',
-				'ТЭЛА?',
-				'Инфаркт-пневмония легких?',
+				titleStates.pneumoniaWithBloodThroating,
+				titleStates.pulmonaryTuberculosis,
+				titleStates.tela,
+				titleStates.pulmonaryInfarction,
 			);
 	}
-	if (runnyNose > 0 && pollinosis > 0) mixDiagnoses.push('Поллиноз?');
-	if (bronchialAsthmaConfirmed > 0) mixDiagnoses.push('Бронхиальная астма?');
-	if (cough === 2 && sputum > 0 && dyspnoea > 20 && smoking + powder + vape >= 10) mixDiagnoses.push('ХОБЛ?');
-	if (powder > 0) mixDiagnoses.push('Защита органов дыхания при помощи респиратора.');
-	if (smoking + vape > 0) mixDiagnoses.push('Отказ от вредных привычек.');
+	if (runnyNose > 0 && pollinosis > 0) mixDiagnoses.push(titleStates.pollinosis);
+	if (bronchialAsthmaConfirmed > 0) mixDiagnoses.push(titleStates.bronchialAsthma);
+	if (cough === 2 && sputum > 0 && dyspnoea > 20 && smoking + powder + vape >= 10) mixDiagnoses.push(titleStates.copd);
+	if (powder > 0) otherGuidelines.push(titleStates.respiratoryProtection);
+	if (smoking + vape > 0) otherGuidelines.push(titleStates.rejectionBadHabits);
 	if (
 		soreThroat +
 			plaquesTonsils +
@@ -92,15 +97,18 @@ formFromRespiratoryAnamnesis.addEventListener('submit', (event) => {
 			asthmaAttacks ===
 		0
 	) {
-		mixDiagnoses.push('На данный момент патологии не выявлено.');
+		mixDiagnoses.push(titleStates.noPathology);
 	}
-	const uniqueDiagnoses = new Set(mixDiagnoses);
+	let uniqueDiagnoses = new Set(mixDiagnoses);
 	personalData.title = Array.from(uniqueDiagnoses);
 	personalData.anamnesis = historyTaking(allElements);
-	console.log(personalData);
+	personalData.otherGuidelines = otherGuidelines;
 
-	metaData(personalData);
-
-	// const example = fetch('http://localhost:4000/movies?search=Acute%20Bronchitis').then(handleRequestResolve()).catch(handleRequestReject());
-	// console.log(example);
-});
+	personalDataClone = structuredClone(personalData);
+	console.log(personalDataClone);
+	metaData(personalDataClone);
+	formFromRespiratoryAnamnesis.reset();
+	listRespiratory.classList.add('unvisible');
+	tabRespiratory.classList.remove('active');
+	resultSurvey.classList.remove('unvisible');
+};

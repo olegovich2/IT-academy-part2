@@ -11,9 +11,14 @@
     <header class="header">
             <img class="svg_param" src="./images/icon.png" alt="иконка" title="иконка">
             <h1>QUICK DIAGNOSIS</h1>
-            <button class="entry_button" type="submit" data-button="login">
-                <i class="fa-solid fa-right-to-bracket"></i>
-            </button>            
+            <div class="buttonsLogin">
+            <button class="entry_button" type="button" data-button="login">
+                <i class="fa-solid fa-user"></i>
+            </button> 
+            <button class="exit_button unvisible" type="button" data-button="logout">
+                <i class="fa-solid fa-xmark"></i>
+            </button> 
+            </div>           
     </header>
     <nav class="navbar" data-nav="allTabs">
         <ul class="navlist">
@@ -181,12 +186,15 @@
         <section class="forms_content unvisible" id="musculoskeletal">
             <form data-form="musculoskeletal"></form>
         </section>
-        <div class="result" id="result" data-result="resultSurvey">
+        <div class="result unvisible" id="result" data-result="resultSurvey">
             <div id="print">
                 <div class="header_for_print">
                     <h1>QUICK DIAGNOSIS</h1>
                 </div>
                 <h2>Результат опроса</h2>
+                <div class="content_survey">Дата и время:
+                    <p data-result="dateAndTime"></p>
+                </div>
                 <div class="content_survey">Фамилия Имя Отчество:
                     <p data-result="name"></p>
                 </div>
@@ -208,13 +216,31 @@
                 <div class="many_content_survey">Рекомендации по лечению до обращению к врачу:
                     <p data-result="treatment"></p>
                 </div>
-                <div class="many_content_survey">Рекомендуемый объем жидкости:
+                <div class="many_content_survey">Дополнительные рекомендации:
                     <p data-result="volumeOfLiquid"></p>
                 </div>
             </div>
             <button type="button" data-button="print">Печать</button>
+            <button type="button" data-button="saveData">Сохранить</button>
+            <button type="button" data-button="closeResultSurvey">Закрыть</button>
         </div>
     </main>
+    <div class="unvisible" data-temp="windowLogin">
+        <div class="blur">
+        <form class="form_login" data-form="auth">
+            <fieldset data-fieldset="login">
+                <legend>Введите номер телефона</legend>
+                <input class="input_length" type="input" id="login" name="login" placeholder="Пример: 375253333333"/>
+            </fieldset>
+            <fieldset data-fieldset="password">
+                <legend>Пароль</legend>
+                <input class="input_length" type="input" id="password" name="password" placeholder="Пароль"/>
+            </fieldset>
+            <button class="" type="button" data-button="registration">Зарегистрироваться</button> 
+            <button class="" type="button" data-button="entrance">Вход</button>
+        </form>
+    </div>
+</div>
     <footer class="footer">
         <h6 class="footer_content">&copy;olegovich</h6>
     </footer>

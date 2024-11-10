@@ -1,0 +1,35 @@
+{
+  "posts": [
+    {
+      "id": "375445555555",
+      "password": "11111111",
+      "personalList": []
+    },
+    {
+      "id": "375331111111",
+      "password": "22222222",
+      "personalList": []
+    }
+  ],
+  "comments": [
+    {
+      "id": "1",
+      "text": "a comment about post 1",
+      "postId": null
+    },
+    {
+      "id": "2",
+      "text": "another comment about post 1",
+      "postId": null
+    }
+  ],
+  "profile": {
+    "item": {
+      "item": {
+        "item": {
+          "name": "typicode"
+        }
+      }
+    }
+  }
+}
