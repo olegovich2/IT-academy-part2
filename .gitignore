@@ -1,3 +1,4 @@
 node_modules
 /dist
 /mockAPI
+mockAPI/MoviesAPI.ReactJS
