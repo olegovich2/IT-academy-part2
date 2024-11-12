@@ -1,7 +1,6 @@
 import { handleRespiratory } from '../constants/respiratory';
 import { resultSurvey, clearResultSurvey } from '../utils/createSurveyResult';
-import { buttonForPrint } from '../constants/printResult';
-import { callPrint } from './print';
+import { callPrint, buttonForPrint } from './print';
 import { getDataForRegistration, getDataForEntrance } from '../api';
 
 const allTabs = document.querySelector('[data-nav="allTabs"]');
@@ -19,11 +18,45 @@ const listUrinary = document.querySelector('#urinary');
 const listMusculoskeletal = document.querySelector('#musculoskeletal');
 const sections = document.querySelectorAll('section');
 export const formFromRespiratoryAnamnesis = document.querySelector('[data-form="respiratory"]');
+export const containerForButtonsInHeader = document.querySelector('[data-container="buttons"]');
 export const loginButton = document.querySelector('[data-button="login"]');
+export const personalAccount = document.querySelector('[data-button="personalAccount"]');
 export const logoutButton = document.querySelector('[data-button="logout"]');
 export const windowReg = document.querySelector('[data-temp="windowLogin"]');
 export const buttonRegistration = document.querySelector('[data-button="registration"]');
 export const formAuth = document.querySelector('[data-form="auth"]');
+
+export const entranceInPersonalAccount = () => {
+	personalAccount.classList.remove('unvisible');
+	logoutButton.classList.remove('unvisible');
+	loginButton.classList.add('unvisible');
+};
+
+export const exitFromPersonalAccount = () => {
+	personalAccount.classList.add('unvisible');
+	logoutButton.classList.add('unvisible');
+	loginButton.classList.remove('unvisible');
+};
+
+containerForButtonsInHeader.addEventListener('click', (event) => {
+	event.preventDefault();
+	console.log(event.target);
+
+	if (event.target.dataset.button === 'login' || event.target.classList.contains('fa-user')) {
+		windowReg.classList.remove('unvisible');
+		if (!windowReg.classList.contains('unvisible')) {
+			formAuth.addEventListener('click', handleRegistration);
+		}
+	}
+	if (event.target.dataset.button === 'personalAccount' || event.target.classList.contains('fa-receipt')) {
+		console.log('personalAccount');
+	}
+	if (event.target.dataset.button === 'logout' || event.target.classList.contains('fa-xmark')) {
+		console.log('close');
+		localStorage.removeItem('test');
+		exitFromPersonalAccount();
+	}
+});
 
 allTabs.addEventListener('click', (event) => {
 	sections.forEach((element) => {
@@ -78,28 +111,11 @@ allTabs.addEventListener('click', (event) => {
 		});
 	}
 });
-
-loginButton.addEventListener('click', (event) => {
-	event.preventDefault();
-	windowReg.classList.remove('unvisible');
-	if (!windowReg.classList.contains('unvisible')) {
-		formAuth.addEventListener('click', handleRegistration);
-	}
-	// const paramRegistration = {};
-	// const login = event.target.elements.login.value;
-	// const password = event.target.elements.password.value;
-	// paramRegistration.id = login;
-	// paramRegistration.password = password;
-	// if (event.target.elements) getData(login, paramRegistration);
-});
 const handleRegistration = (event) => {
 	event.preventDefault();
 	const paramRegistration = {};
 	const login = formAuth.querySelector('#login').value;
 	const password = formAuth.querySelector('#password').value;
-
-	console.log(paramRegistration);
-
 	if (event.target.dataset.button === 'registration') {
 		if (login.length !== 0 || password.length !== 0) {
 			paramRegistration.id = login;
@@ -123,6 +139,10 @@ const handleRegistration = (event) => {
 		} else {
 			alert('Вы ничего не ввели');
 		}
+	}
+	if (event.target.dataset.button === 'close') {
+		formAuth.reset();
+		windowReg.classList.add('unvisible');
 	}
 };
 

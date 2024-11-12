@@ -1,5 +1,5 @@
-import { callPrint } from '../utils/print';
-export const buttonForPrint = document.querySelector('[data-button="print"]');
+import { callPrint, buttonForPrint } from '../utils/print';
+
 buttonForPrint.addEventListener('click', () => {
 	callPrint('#print');
 });

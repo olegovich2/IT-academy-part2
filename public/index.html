@@ -11,9 +11,12 @@
     <header class="header">
             <img class="svg_param" src="./images/icon.png" alt="иконка" title="иконка">
             <h1>QUICK DIAGNOSIS</h1>
-            <div class="buttonsLogin">
+            <div class="buttonsLogin" data-container="buttons">
             <button class="entry_button" type="button" data-button="login">
                 <i class="fa-solid fa-user"></i>
+            </button> 
+            <button class="personal_account unvisible" type="button" data-button="personalAccount">
+                <i class="fa-solid fa-receipt"></i>
             </button> 
             <button class="exit_button unvisible" type="button" data-button="logout">
                 <i class="fa-solid fa-xmark"></i>
@@ -228,6 +231,7 @@
     <div class="unvisible" data-temp="windowLogin">
         <div class="blur">
         <form class="form_login" data-form="auth">
+            <button class="exit_button_from_form_login" type="button" data-button="close">X</button>
             <fieldset data-fieldset="login">
                 <legend>Введите номер телефона</legend>
                 <input class="input_length" type="input" id="login" name="login" placeholder="Пример: 375253333333"/>
@@ -236,8 +240,8 @@
                 <legend>Пароль</legend>
                 <input class="input_length" type="input" id="password" name="password" placeholder="Пароль"/>
             </fieldset>
-            <button class="" type="button" data-button="registration">Зарегистрироваться</button> 
-            <button class="" type="button" data-button="entrance">Вход</button>
+            <button class="button_from_form_login" type="button" data-button="registration">Зарегистрироваться</button> 
+            <button class="button_from_form_login" type="button" data-button="entrance">Вход</button>
         </form>
     </div>
 </div>

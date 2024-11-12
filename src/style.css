@@ -15,7 +15,7 @@ body {
     margin: 0;
     border-bottom: 5px solid rgba(36, 129, 157);
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 30%;
 }
 
 .svg_param {
@@ -38,29 +38,30 @@ h2 {
     vertical-align: middle;
     text-align: center;
 }
-
-.entry_button {
-    color: rgb(31, 116, 84);  
-    background-color: rgba(85, 210, 248, 0);
-    padding: 15px;
-    margin: 0;
-    margin-left: 60%;
-    border: none;
-    font-size: 22px;
-    transition: 0.3s;
+.buttonsLogin{
+    display: grid;
+    grid-template-columns: 30% 30% 30%;  
 }
+.entry_button,
+.personal_account,
 .exit_button {
     color: rgb(31, 116, 84);  
     background-color: rgba(85, 210, 248, 0);
-    padding: 15px;
-    margin: 0;
-    margin-left: 60%;
+    padding: 0;
+    margin-left: 30%;
     border: none;
     font-size: 22px;
     transition: 0.3s;
 }
+.entry_button,
+.personal_account,
+.exit_button i {
+    width: 100%;
+}
 .entry_button:hover,
 .entry_button:focus,
+.personal_account:hover,
+.personal_account:focus,
 .exit_button:hover,
 .exit_button:focus,
 .navlist li:hover,
@@ -148,6 +149,25 @@ h2 {
     width: 100%;
     height: 100vh;
     z-index: 9;
+}
+.exit_button_from_form_login {
+    color: black;  
+    background-color: rgb(31, 116, 84);
+    padding: 10px;
+    margin-left: 90%;
+    border: none;
+    font-size: 12px;
+    font-weight: 900;
+    transition: 0.3s;
+}
+.button_from_form_login {
+    color: black;  
+    background-color: rgb(31, 116, 84);
+    padding: 5px;
+    margin: 0 5px;
+    border: none;
+    font-size: 12px;
+    transition: 0.3s;
 }
 .form_login {
     position: relative;
