@@ -1,8 +1,7 @@
 import { historyTaking } from '../utils/historyTaking';
 import { metaData } from '../utils/metaData';
 import { titleStates } from './allConstants';
-import { formFromRespiratoryAnamnesis, listRespiratory, tabRespiratory } from '../utils/logicTab';
-import { resultSurvey } from '../utils/createSurveyResult';
+import { formFromRespiratoryAnamnesis, listRespiratory, tabRespiratory, resultSurvey } from '../utils/logicTab';
 
 export let personalDataClone = {};
 export const handleRespiratory = (event) => {

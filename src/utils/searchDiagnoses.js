@@ -1,7 +1,7 @@
 import { initApp } from '../app';
 import { personalDataClone } from '../constants/respiratory';
 import { createElementsResultSurvey } from '../utils/createSurveyResult';
-import { putData } from '../api';
+import { elementsForSurveys } from '../constants/allConstants';
 
 let diagnosticsList = [];
 let treatmentList = [];
@@ -28,6 +28,6 @@ export const acceptData = (data) => {
 	return arrayInDomElement(personalDataClone);
 };
 const arrayInDomElement = (object) => {
-	createElementsResultSurvey(object);
-	// putData();
+	createElementsResultSurvey(object, elementsForSurveys.baseSurvey);
+	localStorage.setItem('object', JSON.stringify(object));
 };

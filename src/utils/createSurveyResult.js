@@ -1,24 +1,25 @@
-export const resultSurvey = document.querySelector('[data-result="resultSurvey"]');
-export const createElementsResultSurvey = (object) => {
-	resultSurvey.querySelector('[data-result="dateAndTime"]').textContent = object.date;
-	resultSurvey.querySelector('[data-result="name"]').textContent = object.nameSurname;
-	resultSurvey.querySelector('[data-result="age"]').textContent = object.age;
-	resultSurvey.querySelector('[data-result="temperature"]').textContent = object.temperature;
-	resultSurvey.querySelector('[data-result="overview"]').textContent = object.anamnesis;
-	resultSurvey.querySelector('[data-result="listDiagnosis"]').textContent = object.title.join(' ');
-	resultSurvey.querySelector('[data-result="diagnostics"]').textContent = object.diagnostic.join(', ');
-	resultSurvey.querySelector('[data-result="treatment"]').textContent = object.treatment.join(', ');
-	resultSurvey.querySelector('[data-result="volumeOfLiquid"]').textContent = object.otherGuidelines.join(' ');
+export const createElementsResultSurvey = (object, path) => {
+	const resultSurvey = document.querySelector(path.elementPath);
+	resultSurvey.querySelector(path.date).textContent = object.date;
+	resultSurvey.querySelector(path.name).textContent = object.nameSurname;
+	resultSurvey.querySelector(path.age).textContent = object.age;
+	resultSurvey.querySelector(path.temperature).textContent = object.temperature;
+	resultSurvey.querySelector(path.overview).textContent = object.anamnesis;
+	resultSurvey.querySelector(path.listDiagnosis).textContent = object.title.join(' ');
+	resultSurvey.querySelector(path.diagnostics).textContent = object.diagnostic.join(', ');
+	resultSurvey.querySelector(path.treatment).textContent = object.treatment.join(', ');
+	resultSurvey.querySelector(path.otherGuidelines).textContent = object.otherGuidelines.join(' ');
 };
 
-export const clearResultSurvey = () => {
-	resultSurvey.querySelector('[data-result="dateAndTime"]').textContent = '';
-	resultSurvey.querySelector('[data-result="name"]').textContent = '';
-	resultSurvey.querySelector('[data-result="age"]').textContent = '';
-	resultSurvey.querySelector('[data-result="temperature"]').textContent = '';
-	resultSurvey.querySelector('[data-result="overview"]').textContent = '';
-	resultSurvey.querySelector('[data-result="listDiagnosis"]').textContent = '';
-	resultSurvey.querySelector('[data-result="diagnostics"]').textContent = '';
-	resultSurvey.querySelector('[data-result="treatment"]').textContent = '';
-	resultSurvey.querySelector('[data-result="volumeOfLiquid"]').textContent = '';
+export const clearResultSurvey = (path) => {
+	const resultSurvey = document.querySelector(path.elementPath);
+	resultSurvey.querySelector(path.date).textContent = '';
+	resultSurvey.querySelector(path.name).textContent = '';
+	resultSurvey.querySelector(path.age).textContent = '';
+	resultSurvey.querySelector(path.temperature).textContent = '';
+	resultSurvey.querySelector(path.overview).textContent = '';
+	resultSurvey.querySelector(path.listDiagnosis).textContent = '';
+	resultSurvey.querySelector(path.diagnostics).textContent = '';
+	resultSurvey.querySelector(path.treatment).textContent = '';
+	resultSurvey.querySelector(path.otherGuidelines).textContent = '';
 };

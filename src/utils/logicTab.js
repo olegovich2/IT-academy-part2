@@ -1,7 +1,9 @@
 import { handleRespiratory } from '../constants/respiratory';
-import { resultSurvey, clearResultSurvey } from '../utils/createSurveyResult';
-import { callPrint, buttonForPrint } from './print';
+import { clearResultSurvey } from '../utils/createSurveyResult';
+import { callPrint, buttonForPrint, buttonForSaveWordSurvey, buttonForSaveSurvey, buttonForCloseSurvey, saveSurveyToDB } from './print';
 import { getDataForRegistration, getDataForEntrance } from '../api';
+import { handlePersonalAccountWindow, listFromLocalStorage } from './personalAccount';
+import { elementsForSurveys } from '../constants/allConstants';
 
 const allTabs = document.querySelector('[data-nav="allTabs"]');
 const tabGeneral = document.querySelector('[data-list="general"]');
@@ -25,6 +27,8 @@ export const logoutButton = document.querySelector('[data-button="logout"]');
 export const windowReg = document.querySelector('[data-temp="windowLogin"]');
 export const buttonRegistration = document.querySelector('[data-button="registration"]');
 export const formAuth = document.querySelector('[data-form="auth"]');
+export const personalAccountWindow = document.querySelector('[data-temp="personalAccountWindow"]');
+export const resultSurvey = document.querySelector(elementsForSurveys.baseSurvey.elementPath);
 
 export const entranceInPersonalAccount = () => {
 	personalAccount.classList.remove('unvisible');
@@ -40,7 +44,6 @@ export const exitFromPersonalAccount = () => {
 
 containerForButtonsInHeader.addEventListener('click', (event) => {
 	event.preventDefault();
-	console.log(event.target);
 
 	if (event.target.dataset.button === 'login' || event.target.classList.contains('fa-user')) {
 		windowReg.classList.remove('unvisible');
@@ -49,10 +52,11 @@ containerForButtonsInHeader.addEventListener('click', (event) => {
 		}
 	}
 	if (event.target.dataset.button === 'personalAccount' || event.target.classList.contains('fa-receipt')) {
-		console.log('personalAccount');
+		personalAccountWindow.classList.remove('unvisible');
+		personalAccountWindow.addEventListener('click', handlePersonalAccountWindow);
+		listFromLocalStorage();
 	}
 	if (event.target.dataset.button === 'logout' || event.target.classList.contains('fa-xmark')) {
-		console.log('close');
 		localStorage.removeItem('test');
 		exitFromPersonalAccount();
 	}
@@ -105,10 +109,7 @@ allTabs.addEventListener('click', (event) => {
 	if (listMusculoskeletal.classList.contains('unvisible')) tabMusculoskeletal.classList.remove('active');
 
 	if (resultSurvey.classList.contains('unvisible')) {
-		clearResultSurvey();
-		buttonForPrint.removeEventListener('click', () => {
-			callPrint('#print');
-		});
+		clearResultSurvey(elementsForSurveys.baseSurvey);
 	}
 });
 const handleRegistration = (event) => {
@@ -149,3 +150,6 @@ const handleRegistration = (event) => {
 if (windowReg.classList.contains('unvisible')) {
 	formAuth.removeEventListener('click', handleRegistration);
 }
+
+if (resultSurvey.classList.contains('unvisible')) localStorage.removeItem('object');
+if (!!localStorage.getItem('test')) entranceInPersonalAccount();

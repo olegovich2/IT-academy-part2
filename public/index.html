@@ -1,27 +1,31 @@
 <!DOCTYPE html>
 <html lang="en, ru">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>QuickDiagnosis</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css?family=Montserrat:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap&subset=cyrillic"
+        rel="stylesheet">
     <script src="https://kit.fontawesome.com/d23624fc6e.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
     <header class="header">
-            <img class="svg_param" src="./images/icon.png" alt="иконка" title="иконка">
-            <h1>QUICK DIAGNOSIS</h1>
-            <div class="buttonsLogin" data-container="buttons">
+        <img class="svg_param" src="./images/icon.png" alt="иконка" title="иконка">
+        <h1>QUICK DIAGNOSIS</h1>
+        <div class="buttonsLogin" data-container="buttons">
             <button class="entry_button" type="button" data-button="login">
                 <i class="fa-solid fa-user"></i>
-            </button> 
+            </button>
             <button class="personal_account unvisible" type="button" data-button="personalAccount">
                 <i class="fa-solid fa-receipt"></i>
-            </button> 
+            </button>
             <button class="exit_button unvisible" type="button" data-button="logout">
                 <i class="fa-solid fa-xmark"></i>
-            </button> 
-            </div>           
+            </button>
+        </div>
     </header>
     <nav class="navbar" data-nav="allTabs">
         <ul class="navlist">
@@ -41,140 +45,146 @@
             <form data-form="respiratory">
                 <fieldset data-fieldset="nameSurname">
                     <legend>Фамилия Имя Отчество</legend>
-                    <input class="input_length" type="input" id="nameSurname" name="nameSurname" placeholder="Фамилия Имя Отчество"/>
+                    <input class="input_length" type="input" id="nameSurname" name="nameSurname"
+                        placeholder="Фамилия Имя Отчество" />
                 </fieldset>
                 <fieldset data-fieldset="age">
                     <legend>Полных лет</legend>
-                    <input type="input" id="age" name="age" placeholder="Например: 24"/>
+                    <input type="input" id="age" name="age" placeholder="Например: 24" />
                 </fieldset>
                 <fieldset data-fieldset="temperature">
                     <legend>Температура</legend>
-                    <input type="input" id="temperature" name="temperature" placeholder="Например: 37.8"/>
+                    <input type="input" id="temperature" name="temperature" placeholder="Например: 37.8" />
                 </fieldset>
                 <fieldset data-fieldset="weightBody">
                     <legend>Вес</legend>
-                    <input type="input" id="weightBody" name="weightBody" placeholder="Например: 51"/>
+                    <input type="input" id="weightBody" name="weightBody" placeholder="Например: 51" />
                 </fieldset>
                 <fieldset data-fieldset="soreThroat">
                     <legend>Боль в горле</legend>
-                    <input type="radio" id="soreThroatNone" name="soreThroat" value="0" checked/>
+                    <input type="radio" id="soreThroatNone" name="soreThroat" value="0" checked />
                     <label for="soreThroatNone">Нет</label>
-                    <input type="radio" id="soreThroatYes" name="soreThroat" value="1"/>
-                    <label for="soreThroatYes">Да</label>                    
+                    <input type="radio" id="soreThroatYes" name="soreThroat" value="1" />
+                    <label for="soreThroatYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="plaquesTonsils">
                     <legend>Налеты на миндалинах</legend>
-                    <input type="radio" id="plaquesTonsilsNone" name="plaquesTonsils" value="0" checked/>
+                    <input type="radio" id="plaquesTonsilsNone" name="plaquesTonsils" value="0" checked />
                     <label for="plaquesTonsilsNone">Нет</label>
-                    <input type="radio" id="plaquesTonsilsYes" name="plaquesTonsils" value="1"/>
-                    <label for="plaquesTonsilsYes">Да</label>                    
+                    <input type="radio" id="plaquesTonsilsYes" name="plaquesTonsils" value="1" />
+                    <label for="plaquesTonsilsYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="runnyNose">
                     <legend>Насморк</legend>
-                    <input type="radio" id="runnyNoseNone" name="runnyNose" value="0" checked/>
+                    <input type="radio" id="runnyNoseNone" name="runnyNose" value="0" checked />
                     <label for="runnyNoseNone">Нет</label>
-                    <input type="radio" id="runnyNoseYes" name="runnyNose" value="1"/>
-                    <label for="runnyNoseYes">Да</label>                    
+                    <input type="radio" id="runnyNoseYes" name="runnyNose" value="1" />
+                    <label for="runnyNoseYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="pollinosis">
-                    <legend>Есть ли у Вас аллергическая реакция на цветение растений, на пыль, на домашних животных?</legend>
-                    <input type="radio" id="pollinosisNone" name="pollinosis" value="0" checked/>
+                    <legend>Есть ли у Вас аллергическая реакция на цветение растений, на пыль, на домашних животных?
+                    </legend>
+                    <input type="radio" id="pollinosisNone" name="pollinosis" value="0" checked />
                     <label for="pollinosisNone">Нет</label>
-                    <input type="radio" id="pollinosisYes" name="pollinosis" value="1"/>
-                    <label for="pollinosisYes">Да</label>                    
+                    <input type="radio" id="pollinosisYes" name="pollinosis" value="1" />
+                    <label for="pollinosisYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="cough">
                     <legend>Кашель</legend>
-                    <input type="radio" id="coughNone" name="cough" value="0" checked/>
+                    <input type="radio" id="coughNone" name="cough" value="0" checked />
                     <label for="coughNone">Нет</label>
-                    <input type="radio" id="coughDry" name="cough" value="1"/>
+                    <input type="radio" id="coughDry" name="cough" value="1" />
                     <label for="coughDry">Сухой</label>
-                    <input type="radio" id="coughWet" name="cough" value="2"/>
+                    <input type="radio" id="coughWet" name="cough" value="2" />
                     <label for="coughWet">Влажный</label>
                 </fieldset>
                 <fieldset data-fieldset="dyspnoea">
                     <legend>Число дыханий</legend>
-                    <input type="input" id="dyspnoea" name="dyspnoea" placeholder="Число вдохов за минуту"/>                    
+                    <input type="input" id="dyspnoea" name="dyspnoea" placeholder="Число вдохов за минуту" />
                 </fieldset>
                 <fieldset data-fieldset="sputum">
                     <legend>Мокрота</legend>
-                    <input type="radio" id="sputumNone" name="sputum" value="0" checked/>
+                    <input type="radio" id="sputumNone" name="sputum" value="0" checked />
                     <label for="sputumNone">Нет</label>
-                    <input type="radio" id="sputumWhite" name="sputum" value="1"/>
+                    <input type="radio" id="sputumWhite" name="sputum" value="1" />
                     <label for="sputumNone">Мокрота прозрачная или белая</label>
-                    <input type="radio" id="sputumBacterial" name="sputum" value="2"/>
+                    <input type="radio" id="sputumBacterial" name="sputum" value="2" />
                     <label for="sputumBacterial">Мокрота желтая, зеленоватая и их оттенки</label>
                 </fieldset>
                 <fieldset data-fieldset="hemoptysis">
                     <legend>Кровохарканье</legend>
-                    <input type="radio" id="hemoptysisNone" name="hemoptysis" value="0" checked/>
+                    <input type="radio" id="hemoptysisNone" name="hemoptysis" value="0" checked />
                     <label for="hemoptysisNone">Нет</label>
-                    <input type="radio" id="hemoptysisPink" name="hemoptysis" value="1"/>
+                    <input type="radio" id="hemoptysisPink" name="hemoptysis" value="1" />
                     <label for="hemoptysisPink">Мокрота розовая, или прожилки крови в мокроте</label>
-                    <input type="radio" id="hemoptysisBlood" name="hemoptysis" value="2"/>
+                    <input type="radio" id="hemoptysisBlood" name="hemoptysis" value="2" />
                     <label for="hemoptysisBlood">Алая кровь при кашле</label>
                 </fieldset>
                 <fieldset data-fieldset="chestPainBreathing">
                     <legend>Боль в грудной клетке при дыхании</legend>
-                    <input type="radio" id="chestPainBreathingNone" name="chestPainBreathing" value="0" checked/>
+                    <input type="radio" id="chestPainBreathingNone" name="chestPainBreathing" value="0" checked />
                     <label for="chestPainBreathingNone">Нет</label>
-                    <input type="radio" id="chestPainBreathingYes" name="chestPainBreathing" value="1"/>
-                    <label for="chestPainBreathingYes">Да</label>                    
+                    <input type="radio" id="chestPainBreathingYes" name="chestPainBreathing" value="1" />
+                    <label for="chestPainBreathingYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="daysDisease">
                     <legend>Сколько дней болеете?</legend>
-                    <input type="input" id="daysDisease" name="daysDisease" placeholder="Например: 15"/>
+                    <input type="input" id="daysDisease" name="daysDisease" placeholder="Например: 15" />
                 </fieldset>
                 <fieldset data-fieldset="frequentPneumonia">
                     <legend>Вы ранее болели пневмонией?</legend>
-                    <input type="radio" id="frequentPneumoniaNone" name="frequentPneumonia" value="0" checked/>
+                    <input type="radio" id="frequentPneumoniaNone" name="frequentPneumonia" value="0" checked />
                     <label for="frequentPneumoniaNone">Нет</label>
-                    <input type="radio" id="frequentPneumoniaYes" name="frequentPneumonia" value="1"/>
-                    <label for="frequentPneumoniaYes">Да</label>                    
+                    <input type="radio" id="frequentPneumoniaYes" name="frequentPneumonia" value="1" />
+                    <label for="frequentPneumoniaYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="bronchialAsthmaAnamnesis">
                     <legend>Выставлен ли у родственников диагноз: "Бронхиальная астма"?</legend>
-                    <input type="radio" id="bronchialAsthmaAnamnesisNone" name="bronchialAsthmaAnamnesis" value="0" checked/>
+                    <input type="radio" id="bronchialAsthmaAnamnesisNone" name="bronchialAsthmaAnamnesis" value="0"
+                        checked />
                     <label for="bronchialAsthmaAnamnesisNone">Нет</label>
-                    <input type="radio" id="bronchialAsthmaAnamnesisYes" name="bronchialAsthmaAnamnesis" value="1"/>
-                    <label for="bronchialAsthmaAnamnesisYes">Да</label>                    
+                    <input type="radio" id="bronchialAsthmaAnamnesisYes" name="bronchialAsthmaAnamnesis" value="1" />
+                    <label for="bronchialAsthmaAnamnesisYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="bronchialAsthmaConfirmed">
                     <legend>Выставлен ли у Вас диагноз: "Бронхиальная астма"?</legend>
-                    <input type="radio" id="bronchialAsthmaConfirmedNone" name="bronchialAsthmaConfirmed" value="0" checked/>
+                    <input type="radio" id="bronchialAsthmaConfirmedNone" name="bronchialAsthmaConfirmed" value="0"
+                        checked />
                     <label for="bronchialAsthmaConfirmedNone">Нет</label>
-                    <input type="radio" id="bronchialAsthmaConfirmedYes" name="bronchialAsthmaConfirmed" value="1"/>
-                    <label for="bronchialAsthmaConfirmedYes">Да</label>                    
+                    <input type="radio" id="bronchialAsthmaConfirmedYes" name="bronchialAsthmaConfirmed" value="1" />
+                    <label for="bronchialAsthmaConfirmedYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="asthmaAttacks">
                     <legend>Были ли у Вас приступы удушья?</legend>
-                    <input type="radio" id="asthmaAttacksNone" name="asthmaAttacks" value="0" checked/>
+                    <input type="radio" id="asthmaAttacksNone" name="asthmaAttacks" value="0" checked />
                     <label for="asthmaAttacksNone">Нет</label>
-                    <input type="radio" id="asthmaAttacksYes" name="asthmaAttacks" value="1"/>
-                    <label for="asthmaAttacksYes">Да</label>                    
+                    <input type="radio" id="asthmaAttacksYes" name="asthmaAttacks" value="1" />
+                    <label for="asthmaAttacksYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="smoking">
                     <legend>Табакокурение</legend>
-                    <input type="radio" id="smokingNone" name="smoking" value="0" checked/>
+                    <input type="radio" id="smokingNone" name="smoking" value="0" checked />
                     <label for="smokingNone">Нет</label>
-                    <input type="radio" id="smokingYes" name="smoking" value="5"/>
-                    <label for="smokingYes">Да</label>                    
+                    <input type="radio" id="smokingYes" name="smoking" value="5" />
+                    <label for="smokingYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="powder">
-                    <legend>Работа на производстве, где присутствует пыль или аэрозоль(металлообработка, окрашивание, фасовка удобрений, деревообработка и др.)</legend>
-                    <input type="radio" id="powderNone" name="powder" value="0" checked/>
+                    <legend>Работа на производстве, где присутствует пыль или аэрозоль(металлообработка, окрашивание,
+                        фасовка удобрений, деревообработка и др.)</legend>
+                    <input type="radio" id="powderNone" name="powder" value="0" checked />
                     <label for="powderNone">Нет</label>
-                    <input type="radio" id="powderYes" name="powder" value="5"/>
-                    <label for="powderYes">Да</label>                    
+                    <input type="radio" id="powderYes" name="powder" value="5" />
+                    <label for="powderYes">Да</label>
                 </fieldset>
                 <fieldset data-fieldset="vape">
                     <legend>Использование систем для употребления никотина без горения</legend>
-                    <input type="radio" id="vapeNone" name="vape" value="0" checked/>
+                    <input type="radio" id="vapeNone" name="vape" value="0" checked />
                     <label for="vapeNone">Нет</label>
-                    <input type="radio" id="vapeYes" name="vape" value="5"/>
-                    <label for="vapeYes">Да</label>                    
+                    <input type="radio" id="vapeYes" name="vape" value="5" />
+                    <label for="vapeYes">Да</label>
                 </fieldset>
-                <button class="buttonFromAnamnesis" type="submit" data-button="respiratory">Предварительный диагноз</button>
+                <button class="buttonFromAnamnesis" type="submit" data-button="respiratory">Предварительный
+                    диагноз</button>
             </form>
         </section>
         <section class="forms_content unvisible" id="cardiovascular">
@@ -223,30 +233,98 @@
                     <p data-result="volumeOfLiquid"></p>
                 </div>
             </div>
-            <button type="button" data-button="print">Печать</button>
-            <button type="button" data-button="saveData">Сохранить</button>
-            <button type="button" data-button="closeResultSurvey">Закрыть</button>
+            <button class="buttonFromAnamnesis" type="button" data-button="print">Печать</button>
+            <button class="buttonFromAnamnesis" type="button" data-button="saveData">Сохранить в Личном кабинете</button>
+            <button class="buttonFromAnamnesis" type="button" data-button="saveAs">Сохранить как Word</button>
+            <button class="buttonFromAnamnesis" type="button" data-button="closeResultSurvey">Закрыть</button>
         </div>
     </main>
     <div class="unvisible" data-temp="windowLogin">
         <div class="blur">
-        <form class="form_login" data-form="auth">
-            <button class="exit_button_from_form_login" type="button" data-button="close">X</button>
-            <fieldset data-fieldset="login">
-                <legend>Введите номер телефона</legend>
-                <input class="input_length" type="input" id="login" name="login" placeholder="Пример: 375253333333"/>
-            </fieldset>
-            <fieldset data-fieldset="password">
-                <legend>Пароль</legend>
-                <input class="input_length" type="input" id="password" name="password" placeholder="Пароль"/>
-            </fieldset>
-            <button class="button_from_form_login" type="button" data-button="registration">Зарегистрироваться</button> 
-            <button class="button_from_form_login" type="button" data-button="entrance">Вход</button>
-        </form>
+            <form class="form_login" data-form="auth">
+                <button class="exit_button_from_form_login" type="button" data-button="close">X</button>
+                <fieldset data-fieldset="login">
+                    <legend>Введите номер телефона</legend>
+                    <input class="input_length" type="input" id="login" name="login"
+                        placeholder="Пример: 375253333333" />
+                </fieldset>
+                <fieldset data-fieldset="password">
+                    <legend>Пароль</legend>
+                    <input class="input_length" type="input" id="password" name="password" placeholder="Пароль" />
+                </fieldset>
+                <button class="button_from_form_login" type="button"
+                    data-button="registration">Зарегистрироваться</button>
+                <button class="button_from_form_login" type="button" data-button="entrance">Вход</button>
+            </form>
+        </div>
     </div>
-</div>
-    <footer class="footer">
-        <h6 class="footer_content">&copy;olegovich</h6>
-    </footer>
+    <div class="modal_window_account unvisible" data-temp="personalAccountWindow">
+        <div class="blur">
+            <div class="modal_window_account_area">
+                <button class="close_button_in_account" type="button" data-account="close">X</button>
+                <h1>Личный кабинет</h1>
+                <div class="">
+                    <div class="areagrid">
+                        <div class="area_survey">
+                            <div class="unvisible" data-account="resultSurvey">
+                                <div id="printFromAccount">
+                                    <div class="header_for_print">
+                                        <h2>QUICK DIAGNOSIS</h2>
+                                    </div>
+                                    <h2>Результат опроса</h2>
+                                    <div class="content_survey">Дата и время:
+                                        <p data-account="dateAndTime"></p>
+                                    </div>
+                                    <div class="content_survey">Фамилия Имя Отчество:
+                                        <p data-account="name"></p>
+                                    </div>
+                                    <div class="content_survey">Возраст:
+                                        <p data-account="age"></p>
+                                    </div>
+                                    <div class="content_survey">Температура:
+                                        <p data-account="temperature"></p>
+                                    </div>
+                                    <div class="many_content_survey">Описание симптомов:
+                                        <p data-account="overview"></p>
+                                    </div>
+                                    <div class="many_content_survey">Предварительный диагноз:
+                                        <p data-account="listDiagnosis"></p>
+                                    </div>
+                                    <div class="many_content_survey">Рекомендации по обследованию:
+                                        <p data-account="diagnostics"></p>
+                                    </div>
+                                    <div class="many_content_survey">Рекомендации по лечению до обращению к врачу:
+                                        <p data-account="treatment"></p>
+                                    </div>
+                                    <div class="many_content_survey">Дополнительные рекомендации:
+                                        <p data-account="volumeOfLiquid"></p>
+                                    </div>
+                                </div>
+                                <button class="buttonFromAnamnesis" type="button" data-account="print">Печать</button>
+                                <button class="buttonFromAnamnesis" type="button" data-account="closeResultSurvey">Закрыть</button>
+                                <button class="buttonFromAnamnesis" type="button" data-account="saveAs">Сохранить как Word</button>
+                            </div>
+                        </div>
+                        <div class="area_inspection_list">
+                            <h2>Все осмотры</h2>
+                            <div data-container="allSurveyFromDB"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <footer class="footer">
+            <h6 class="footer_content">&copy;olegovich</h6>
+        </footer>
+        <template data-template="allSurveyFromDB">
+            <div class="oneSurvey" data-div id="">
+                <p data-container="date"></p>
+                <button class="buttonFromTemplate" data-container="lookButton">Посмотреть</button>
+                <button class="buttonFromTemplate" data-container="deleteButton">Удалить</button>
+            </div>
+        </template>
+        
 </body>
+
 </html>
